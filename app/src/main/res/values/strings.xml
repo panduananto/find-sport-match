@@ -1,0 +1,97 @@
+<resources>
+
+    <string name="app_name">FindMatch</string>
+
+    <!-- Ini string main_activity !-->
+    <string name="mainLogo">findmatch</string>
+    <string name="signIn_textView">Masuk</string>
+    <string name="signUp_textView">Daftar</string>
+
+    <!-- Ini string login_fragment dan register_fragment !-->
+    <string name="username_textView">Username</string>
+    <string name="email_textView">Email</string>
+    <string name="password_textView">Password</string>
+    <string name="username_editText">Silahkan masukkan username Anda di sini...</string>
+    <string name="email_editText">Silahkan masukkan email Anda di sini...</string>
+    <string name="password_editText">Silahkan masukkan password Anda di sini...</string>
+    <string name="forgotPassword_textView">Lupa password?</string>
+    <string name="login_button">MASUK</string>
+    <string name="signup_button">DAFTAR</string>
+    <string name="signUpGoogle_button">DAFTAR DENGAN GOOGLE</string>
+    <string name="noAccountYet_textView">Apa Anda masih belum punya akun\? <font color='#4299E1'>Daftar di sini!</font></string>
+    <string name="orAccountGoogle_textView">Atau Anda bisa daftar dengan</string>
+
+    <!-- Ini string home !-->
+    <string name="greetings_textView">Selamat pagi,</string>
+    <string name="usernamePlaceholder_textView">username_placeholder</string>
+    <string name="whatSport_textView">Mau olahraga apa hari ini?</string>
+
+    <!-- Ini string match people !-->
+    <string name="sportWithFriends_textView">Olahraga bareng temen\nitu lebih seru loh!</string>
+
+    <!-- Ini string profile !-->
+    <string name="profile_textView">Profile</string>
+    <string name="usernameOnProfile_textView">placeholder</string>
+    <string name="profileDescription_textView">Lorem Ipsum is simply dummy text\nof the printing and typesetting\nindustry. text ever since the 1500s</string>
+    <string name="personalInfo_textView">Personal Info</string>
+    <string name="personalName_textView">Nama</string>
+    <string name="placeholderName_textView">nama_placeholder</string>
+    <string name="personalEmailAddress_textView">Alamat email</string>
+    <string name="placeholderEmailAddress_textView">alamatemail_placeholder</string>
+    <string name="personalAddress_textView">Alamat lengkap</string>
+    <string name="placeholderAddress_textView">alamatlengkap_placeholder</string>
+
+    <!-- Ini string bottom_navigation di home_activity !-->
+    <string name="nav_home">Home</string>
+    <string name="nav_trophy">Match</string>
+    <string name="nav_settings">Settings</string>
+
+    <!-- Ini string card view !-->
+    <string name="placeholderSportName_textView">placeholder_sportname</string>
+    <string name="imageDescription">Ini image sport</string>
+    <string-array name="sportName">
+        <item>Badminton</item>
+        <item>Swimming</item>
+        <item>Basketball</item>
+        <item>Futsal</item>
+    </string-array>
+
+    <!-- Ini string match people !-->
+    <string name="myGame_textView">My Game</string>
+    <string name="addGame_textView">Add game</string>
+    <string name="youNoGame_textView">Anda masih belum punya jadwal main nih!</string>
+    <string name="othersGame_textView">Others Game</string>
+
+    <!-- Ini string card match people !-->
+    <string name="sportTagPlaceholder_textView">sportTag_placeholder</string>
+    <string name="sportLocationPlaceholder_textView">sportLocation_placeholder</string>
+    <string name="sportAddressLocationPlaceholder_textView">sportAddressLocation_placeholder</string>
+    <string name="statusPlayPlaceholder_textView">statusPlay_placeholder</string>
+    <string name="spotAvailablePlaceholder_textView">spotAvailable_placeholder</string>
+    <string name="button_joinMatch">JOIN</string>
+    <string-array name="sportTag">
+        <item>Bulutangkis</item>
+        <item>Renang</item>
+        <item>Basket</item>
+    </string-array>
+    <string-array name="sportLocation">
+        <item>Bultang GOR Djaya</item>
+        <item>Citos Swimming Pool</item>
+        <item>Basketball Court Kecapi</item>
+    </string-array>
+    <string-array name="sportAddressLocation">
+        <item>Jl. Bango III No.40, RW.3, Pd. Labu, Kec. Cilandak, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12450</item>
+        <item>Jl. Cilandak Ⅰ Ujung No.80b, RT.2/RW.1, Cilandak Bar., Kecamatan Cilandak, Kota Jakarta Selatan, DKI Jakarta 12430</item>
+        <item>Jl. Kecapi No.2, RT.8/RW.6, Pd. Labu, Kec. Cilandak, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12450</item>
+    </string-array>
+    <string-array name="statusPlay">
+        <item>MENUNGGU LAWAN</item>
+        <item>MENUNGGU LAWAN</item>
+        <item>MENUNGGU LAWAN</item>
+    </string-array>
+    <string-array name="spotAvailable">
+        <item>3/6 pemain</item>
+        <item>1/3 pemain</item>
+        <item>5/10 pemain</item>
+    </string-array>
+</resources>
