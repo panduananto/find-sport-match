@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.findmatch.R;
@@ -28,6 +29,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
 
     EditText editTextUsername, editTextEmail, editTextPassword;
     Button buttonSignUp;
+    ProgressBar progressBarOnRegister;
 
     private FirebaseAuth mAuth;
 
@@ -43,6 +45,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
         editTextEmail = (EditText) view.findViewById(R.id.editText_emailOnRegister);
         editTextPassword = (EditText) view.findViewById(R.id.editText_passwordOnRegister);
         buttonSignUp = (Button) view.findViewById(R.id.button_signup);
+        progressBarOnRegister = (ProgressBar) view.findViewById(R.id.progressbar_onRegister);
 
         buttonSignUp.setOnClickListener(this);
 
@@ -76,13 +79,20 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
             return;
         }
 
+        progressBarOnRegister.setVisibility(View.VISIBLE);
+
         mAuth.createUserWithEmailAndPassword(emailInput, passwordInput)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+                        progressBarOnRegister.setVisibility(View.GONE);
                         if (task.isSuccessful()) {
                             Toast.makeText(getContext(),
                                     "User Registered Successfull",
+                                    Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getContext(),
+                                    "Some error occured",
                                     Toast.LENGTH_SHORT).show();
                         }
                     }
