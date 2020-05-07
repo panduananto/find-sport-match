@@ -19,6 +19,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
 import java.util.zip.Inflater;
 
@@ -91,9 +92,15 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                                     "User Registered Successfull",
                                     Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(getContext(),
-                                    "Some error occured",
-                                    Toast.LENGTH_SHORT).show();
+                            if (task.getException() instanceof FirebaseAuthUserCollisionException) {
+                                Toast.makeText(getContext(),
+                                        "This email address is already registered",
+                                        Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getContext(),
+                                        task.getException().getMessage(),
+                                        Toast.LENGTH_SHORT).show();
+                            }
                         }
                     }
                 });
