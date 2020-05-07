@@ -28,7 +28,7 @@ import java.util.zip.Inflater;
  */
 public class RegisterFragment extends Fragment implements View.OnClickListener {
 
-    EditText editTextUsername, editTextEmail, editTextPassword;
+    EditText editTextEmail, editTextPassword;
     Button buttonSignUp;
     ProgressBar progressBarOnRegister;
 

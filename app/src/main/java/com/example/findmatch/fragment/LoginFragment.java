@@ -29,7 +29,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.fragment_login, container, false);
+        View view = inflater.inflate(R.layout.fragment_login, container, false);
         Button buttonLogin = (Button) view.findViewById(R.id.button_login);
         TextView textNoAccount = (TextView) view.findViewById(R.id.textView_noAccountYet);
 
