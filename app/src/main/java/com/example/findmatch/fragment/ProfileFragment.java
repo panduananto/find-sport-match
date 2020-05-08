@@ -1,6 +1,5 @@
 package com.example.findmatch.fragment;
 
-
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,17 +10,14 @@ import android.view.ViewGroup;
 
 import com.example.findmatch.R;
 
-
 /**
  * A simple {@link Fragment} subclass.
  */
 public class ProfileFragment extends Fragment {
 
-
     public ProfileFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,5 +27,4 @@ public class ProfileFragment extends Fragment {
 
         return view;
     }
-
 }

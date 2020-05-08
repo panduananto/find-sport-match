@@ -73,7 +73,7 @@
     </EditText>
 
     <Button
-        android:id="@+id/button_signup"
+        android:id="@+id/button_next"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
@@ -81,7 +81,7 @@
         android:layout_marginEnd="25dp"
         android:background="@drawable/button_shape"
         android:fontFamily="@font/montserrat_bold"
-        android:text="@string/signup_button"
+        android:text="@string/next_button"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -100,7 +100,7 @@
         android:textColor="@color/gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button_signup">
+        app:layout_constraintTop_toBottomOf="@id/button_next">
     </TextView>
 
     <Button
@@ -118,15 +118,4 @@
         app:layout_constraintTop_toBottomOf="@id/textView_orAccountGoogle">
     </Button>
 
-    <ProgressBar
-        android:id="@+id/progressbar_onRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:elevation="1dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/button_signup"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_emailOnRegister">
-    </ProgressBar>
 </androidx.constraintlayout.widget.ConstraintLayout>
