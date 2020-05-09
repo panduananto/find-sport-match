@@ -16,6 +16,13 @@ import com.example.findmatch.R;
 
 import com.example.findmatch.activity.MainActivity;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+
+import javax.annotation.Nullable;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,6 +33,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private TextView textViewLogout;
 
     private FirebaseAuth mAuth;
+    private FirebaseFirestore mFireStore;
+    String userId;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -37,10 +46,23 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        usernamePlaceholder = (TextView) view.findViewById(R.id.textView_usernamePlaceholder);
+        usernamePlaceholder = (TextView) view
+                .findViewById(R.id.textView_usernamePlaceholder);
         textViewLogout = (TextView) view.findViewById(R.id.textView_logout);
 
         mAuth = FirebaseAuth.getInstance();
+        userId = mAuth.getCurrentUser().getUid();
+        mFireStore = FirebaseFirestore.getInstance();
+
+        DocumentReference mDocumentReference = mFireStore.collection("Users").document(userId);
+        mDocumentReference.addSnapshotListener(getActivity(), new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot,
+                                @Nullable FirebaseFirestoreException e) {
+                usernamePlaceholder.setText(documentSnapshot
+                        .getString("user_username"));
+            }
+        });
 
         textViewLogout.setOnClickListener(this);
 

@@ -52,6 +52,9 @@
     <string name="placeholderEmailAddress_textView">alamatemail_placeholder</string>
     <string name="personalAddress_textView">Alamat lengkap</string>
     <string name="placeholderAddress_textView">alamatlengkap_placeholder</string>
+    <string name="personalTelpNumber_textView">Nomor Telepon</string>
+    <string name="placeholderTelpNumber_textView">nomortelpon_placeholder</string>
+    <string name="editProfile_textView">Edit profile</string>
 
     <!-- Ini string bottom_navigation di home_activity !-->
     <string name="nav_home">Home</string>

@@ -1,178 +1,242 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container_fragmentProfile"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
-    app:layout_constraintTop_toTopOf="@id/screenHome"
-    tools:context=".fragment.ProfileFragment">
-
+    android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/container_topProfile"
-        android:layout_width="0dp"
-        android:layout_height="240dp"
-        android:background="@drawable/container_tophome"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:id="@+id/container_fragmentProfile"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
+        app:layout_constraintTop_toTopOf="@id/screenHome"
+        tools:context=".fragment.ProfileFragment">
 
-        <TextView
-            android:id="@+id/textView_profileText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="35dp"
-            android:fontFamily="@font/roboto_medium"
-            android:text="@string/profile_textView"
-            android:textColor="@color/white"
-            android:textSize="26sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/container_profileDesc"
-        android:layout_width="0dp"
-        android:layout_height="230dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginEnd="35dp"
-        android:background="@drawable/profile_desc_shape"
-        android:elevation="2dp"
-        app:layout_constraintBottom_toBottomOf="@+id/container_topProfile"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/container_topProfile">
-
-        <TextView
-            android:id="@+id/textView_usernameOnProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
-            android:fontFamily="@font/roboto_bold"
-            android:text="@string/usernameOnProfile_textView"
-            android:textColor="@color/darkestGray"
-            android:textSize="28sp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/container_topProfile"
+            android:layout_width="0dp"
+            android:layout_height="240dp"
+            android:background="@drawable/container_tophome"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView_profileText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="35dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/profile_textView"
+                android:textColor="@color/white"
+                android:textSize="26sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/containerButtonEditProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginEnd="25dp"
+                app:layout_constraintBottom_toTopOf="@+id/textView_profileText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView_profileText">
+
+                <ImageView
+                    android:id="@+id/imageView_editProfile"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="5dp"
+                    android:src="@drawable/ic_settings_white_36dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/textView_editProfile"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView_editProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/roboto"
+                    android:text="@string/editProfile_textView"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/container_profileDesc"
+            android:layout_width="0dp"
+            android:layout_height="210dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginEnd="35dp"
+            android:background="@drawable/profile_desc_shape"
+            android:elevation="2dp"
+            app:layout_constraintBottom_toBottomOf="@+id/container_topProfile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/container_topProfile">
+
+            <TextView
+                android:id="@+id/textView_usernameOnProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="75dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/usernameOnProfile_textView"
+                android:textColor="@color/darkestGray"
+                android:textSize="28sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView_profileDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/roboto_light"
+                android:text="@string/profileDescription_textView"
+                android:textAlignment="center"
+                android:textColor="@color/darkestGray"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView_usernameOnProfile" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/imageView_photoProfile"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:background="@drawable/circle_shape"
+            android:elevation="3dp"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toTopOf="@id/container_profileDesc"
+            app:layout_constraintEnd_toEndOf="@+id/container_profileDesc"
+            app:layout_constraintStart_toStartOf="@+id/container_profileDesc"
             app:layout_constraintTop_toTopOf="@id/container_profileDesc" />
 
         <TextView
-            android:id="@+id/textView_profileDescription"
+            android:id="@+id/textView_personalInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/roboto_light"
-            android:text="@string/profileDescription_textView"
-            android:textAlignment="center"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/personalInfo_textView"
+            android:textColor="@color/darkestGray"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/container_profileDesc" />
+
+        <TextView
+            android:id="@+id/textView_personalName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/personalName_textView"
             android:textColor="@color/darkestGray"
             android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView_usernameOnProfile" />
+            app:layout_constraintTop_toBottomOf="@+id/textView_personalInfo" />
+
+        <TextView
+            android:id="@+id/textView_placeholderName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:fontFamily="@font/roboto"
+            android:text="@string/placeholderName_textView"
+            android:textColor="@color/darkestGray"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_personalName" />
+
+        <TextView
+            android:id="@+id/textView_personalEmailAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/personalEmailAddress_textView"
+            android:textColor="@color/darkestGray"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_placeholderName" />
+
+        <TextView
+            android:id="@+id/textView_placeholderEmailAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:fontFamily="@font/roboto"
+            android:text="@string/placeholderEmailAddress_textView"
+            android:textColor="@color/darkestGray"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_personalEmailAddress" />
+
+        <TextView
+            android:id="@+id/textView_personalAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/personalAddress_textView"
+            android:textColor="@color/darkestGray"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_placeholderEmailAddress" />
+
+        <TextView
+            android:id="@+id/textView_placeholderAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:fontFamily="@font/roboto"
+            android:text="@string/placeholderAddress_textView"
+            android:textColor="@color/darkestGray"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_personalAddress" />
+
+        <TextView
+            android:id="@+id/textView_personalTelpNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/personalTelpNumber_textView"
+            android:textColor="@color/darkestGray"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_placeholderAddress" />
+
+        <TextView
+            android:id="@+id/textView_placeholderTelpNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:fontFamily="@font/roboto"
+            android:paddingBottom="25dp"
+            android:text="@string/placeholderTelpNumber_textView"
+            android:textColor="@color/darkestGray"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_personalTelpNumber" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <View
-        android:id="@+id/imageView_photoProfile"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:background="@drawable/circle_shape"
-        android:elevation="3dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toTopOf="@id/container_profileDesc"
-        app:layout_constraintEnd_toEndOf="@+id/container_profileDesc"
-        app:layout_constraintStart_toStartOf="@+id/container_profileDesc"
-        app:layout_constraintTop_toTopOf="@id/container_profileDesc" />
-
-    <TextView
-        android:id="@+id/textView_personalInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="25dp"
-        android:fontFamily="@font/roboto_medium"
-        android:text="@string/personalInfo_textView"
-        android:textColor="@color/darkestGray"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/container_profileDesc" />
-
-    <TextView
-        android:id="@+id/textView_personalName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/roboto_medium"
-        android:text="@string/personalName_textView"
-        android:textColor="@color/darkestGray"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_personalInfo" />
-
-    <TextView
-        android:id="@+id/textView_placeholderName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:fontFamily="@font/roboto"
-        android:text="@string/placeholderName_textView"
-        android:textColor="@color/darkestGray"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_personalName" />
-
-    <TextView
-        android:id="@+id/textView_personalEmailAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/roboto_medium"
-        android:text="@string/personalEmailAddress_textView"
-        android:textColor="@color/darkestGray"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_placeholderName" />
-
-    <TextView
-        android:id="@+id/textView_placeholderEmailAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:fontFamily="@font/roboto"
-        android:text="@string/placeholderEmailAddress_textView"
-        android:textColor="@color/darkestGray"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_personalEmailAddress" />
-
-    <TextView
-        android:id="@+id/textView_personalAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/roboto_medium"
-        android:text="@string/personalAddress_textView"
-        android:textColor="@color/darkestGray"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_placeholderEmailAddress" />
-
-    <TextView
-        android:id="@+id/textView_placeholderAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:fontFamily="@font/roboto"
-        android:text="@string/placeholderAddress_textView"
-        android:textColor="@color/darkestGray"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_personalAddress" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
