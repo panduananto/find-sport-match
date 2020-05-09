@@ -45,11 +45,9 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.button_next) {
-            UserDetailInfoRegisterFragment
-                    mUserDetailInfoRegisterFragment = new UserDetailInfoRegisterFragment();
+            UserDetailInfoRegisterFragment mUserDetailInfoRegisterFragment = new UserDetailInfoRegisterFragment();
             FragmentManager mFragmentManager = getFragmentManager();
-            FragmentTransaction mFragmentTransaction = mFragmentManager
-                    .beginTransaction();
+            FragmentTransaction mFragmentTransaction = mFragmentManager.beginTransaction();
             String emailInput = editTextEmail.getText().toString().trim();
             String passwordInput = editTextPassword.getText().toString().trim();
 

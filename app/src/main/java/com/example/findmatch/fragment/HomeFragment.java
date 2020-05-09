@@ -46,8 +46,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        usernamePlaceholder = (TextView) view
-                .findViewById(R.id.textView_usernamePlaceholder);
+        usernamePlaceholder = (TextView) view.findViewById(R.id.textView_usernamePlaceholder);
         textViewLogout = (TextView) view.findViewById(R.id.textView_logout);
 
         mAuth = FirebaseAuth.getInstance();
@@ -59,8 +58,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot,
                                 @Nullable FirebaseFirestoreException e) {
-                usernamePlaceholder.setText(documentSnapshot
-                        .getString("user_username"));
+                usernamePlaceholder.setText(documentSnapshot.getString("user_username"));
             }
         });
 

@@ -101,8 +101,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         if (v.getId() == R.id.textView_noAccountYet) {
             RegisterFragment mRegisterFragment = new RegisterFragment();
             FragmentManager mFragmentManager = getFragmentManager();
-            FragmentTransaction mFragmentTransaction = mFragmentManager
-                    .beginTransaction();
+            FragmentTransaction mFragmentTransaction = mFragmentManager.beginTransaction();
 
             mFragmentTransaction
                     .replace(R.id.screenLoginRegister,

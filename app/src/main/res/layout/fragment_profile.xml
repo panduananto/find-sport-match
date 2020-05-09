@@ -81,6 +81,8 @@
             android:layout_marginEnd="35dp"
             android:background="@drawable/profile_desc_shape"
             android:elevation="2dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
             app:layout_constraintBottom_toBottomOf="@+id/container_topProfile"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -91,7 +93,7 @@
                 android:id="@+id/textView_usernameOnProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="75dp"
+                android:layout_marginTop="70dp"
                 android:fontFamily="@font/roboto_bold"
                 android:text="@string/usernameOnProfile_textView"
                 android:textColor="@color/darkestGray"
@@ -105,16 +107,16 @@
                 android:id="@+id/textView_profileDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="35dp"
                 android:fontFamily="@font/roboto_light"
+                android:maxLines="3"
                 android:text="@string/profileDescription_textView"
                 android:textAlignment="center"
                 android:textColor="@color/darkestGray"
                 android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView_usernameOnProfile" />
+                app:layout_constraintStart_toStartOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <View
@@ -157,12 +159,14 @@
 
         <TextView
             android:id="@+id/textView_placeholderName"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
             android:fontFamily="@font/roboto"
             android:text="@string/placeholderName_textView"
             android:textColor="@color/darkestGray"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_personalName" />
 
@@ -181,12 +185,14 @@
 
         <TextView
             android:id="@+id/textView_placeholderEmailAddress"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
             android:fontFamily="@font/roboto"
             android:text="@string/placeholderEmailAddress_textView"
             android:textColor="@color/darkestGray"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_personalEmailAddress" />
 
@@ -205,12 +211,16 @@
 
         <TextView
             android:id="@+id/textView_placeholderAddress"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:ellipsize="end"
             android:fontFamily="@font/roboto"
+            android:maxLines="1"
             android:text="@string/placeholderAddress_textView"
             android:textColor="@color/darkestGray"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_personalAddress" />
 
@@ -229,13 +239,15 @@
 
         <TextView
             android:id="@+id/textView_placeholderTelpNumber"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
             android:fontFamily="@font/roboto"
             android:paddingBottom="25dp"
             android:text="@string/placeholderTelpNumber_textView"
             android:textColor="@color/darkestGray"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_personalTelpNumber" />
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -44,7 +44,7 @@
     <!-- Ini string profile !-->
     <string name="profile_textView">Profile</string>
     <string name="usernameOnProfile_textView">placeholder</string>
-    <string name="profileDescription_textView">Lorem Ipsum is simply dummy text\nof the printing and typesetting\nindustry. text ever since the 1500s</string>
+    <string name="profileDescription_textView">Lorem Ipsum is simply dummy text of the printing and typesetting industry. text ever since the 1500s</string>
     <string name="personalInfo_textView">Personal Info</string>
     <string name="personalName_textView">Nama</string>
     <string name="placeholderName_textView">nama_placeholder</string>

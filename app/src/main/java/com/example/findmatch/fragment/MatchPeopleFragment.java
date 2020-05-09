@@ -31,7 +31,10 @@ public class MatchPeopleFragment extends Fragment {
 
         FragmentManager mFragmentManager = getChildFragmentManager();
         FragmentTransaction mFragmentTranscation = mFragmentManager.beginTransaction();
-        mFragmentTranscation.add(R.id.container_fragmentMatchPeople, mMatchRecyclerCardFragment, MatchRecyclerCardFragment.class.getSimpleName());
+        mFragmentTranscation
+                .add(R.id.container_fragmentMatchPeople,
+                        mMatchRecyclerCardFragment,
+                        MatchRecyclerCardFragment.class.getSimpleName());
 
         mFragmentTranscation.commit();
 
