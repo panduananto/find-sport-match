@@ -233,12 +233,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="25dp"
-        android:background="@drawable/secondary_button_shape"
-        android:fontFamily="@font/montserrat"
+        android:background="@drawable/button_cancel"
+        android:fontFamily="@font/montserrat_bold"
         android:text="@string/reset_button"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_telpNumber">
-    </Button>
+        app:layout_constraintTop_toBottomOf="@+id/editText_telpNumber"></Button>
 
     <ProgressBar
         android:id="@+id/progressBar_onComplete"

@@ -1,12 +1,17 @@
 package com.example.findmatch.fragment;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.findmatch.R;
@@ -26,6 +31,7 @@ public class ProfileFragment extends Fragment {
 
     private TextView textViewUserName, textViewBio, textViewFullName;
     private TextView textViewEmail, textViewFullAddress, textViewTelpNumber;
+    private ImageView userProfilePicture;
 
     private FirebaseAuth mAuth;
     private FirebaseFirestore mFireStore;
@@ -54,7 +60,8 @@ public class ProfileFragment extends Fragment {
         DocumentReference mDocumentReference = mFireStore.collection("Users").document(userId);
         mDocumentReference.addSnapshotListener(getActivity(), new EventListener<DocumentSnapshot>() {
             @Override
-            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot,
+                                @Nullable FirebaseFirestoreException e) {
                 textViewUserName.setText(documentSnapshot.getString("user_username"));
                 textViewBio.setText(documentSnapshot.getString("user_bio"));
                 textViewFullName.setText(documentSnapshot.getString("user_full_name"));
@@ -64,6 +71,26 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        userProfilePicture = (ImageView) view.findViewById(R.id.imageView_photoProfile);
+        userProfilePicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent openGalleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(openGalleryIntent, 1000);
+            }
+        });
+
         return view;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1000) {
+            if (resultCode == Activity.RESULT_OK) {
+                Uri imageUri = data.getData();
+                userProfilePicture.setImageURI(imageUri);
+            }
+        }
     }
 }
