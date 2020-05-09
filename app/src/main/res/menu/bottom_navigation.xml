@@ -2,16 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_home"
-        android:icon="@drawable/ic_home"
+        android:icon="@drawable/ic_home_black_36dp"
         android:title="@string/nav_home"/>
 
     <item
         android:id="@+id/nav_match"
-        android:icon="@drawable/ic_trophy"
+        android:icon="@drawable/ic_emoji_events_black_36dp"
         android:title="@string/nav_trophy"/>
 
     <item
         android:id="@+id/nav_settings"
-        android:icon="@drawable/ic_cog"
+        android:icon="@drawable/ic_person_black_36dp"
         android:title="@string/nav_settings"/>
 </menu>

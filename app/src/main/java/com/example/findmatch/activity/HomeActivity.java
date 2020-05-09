@@ -24,19 +24,18 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        //inisiasi biar HomeFragment selalu muncul di HomeActivity
-        HomeFragment mHomeFragment = new HomeFragment();
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
 
+        HomeFragment mHomeFragment = new HomeFragment();
         FragmentManager mFragmentManager = getSupportFragmentManager();
         FragmentTransaction mFragmentTransaction = mFragmentManager.beginTransaction();
 
-        mFragmentTransaction.add(R.id.fragment_container, mHomeFragment, HomeFragment.class.getSimpleName());
-
-        mFragmentTransaction.commit();
-
-        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
-
         bottomNav.setOnNavigationItemSelectedListener(navListener);
+
+        mFragmentTransaction.add(R.id.fragment_container,
+                mHomeFragment,
+                HomeFragment.class.getSimpleName());
+        mFragmentTransaction.commit();
     }
 
     //bottom navigation biar bisa pindah pindah ke fragment lain
@@ -57,7 +56,9 @@ public class HomeActivity extends AppCompatActivity {
                             selectedFragment = new ProfileFragment();
                             break;
                     }
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.fragment_container, selectedFragment).commit();
 
                     return true;
                 }

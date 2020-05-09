@@ -55,6 +55,17 @@
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView_usernamePlaceholder" />
+
+        <TextView
+            android:id="@+id/textView_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="25dp"
+            android:fontFamily="@font/roboto"
+            android:text="@string/logout_textView"
+            android:textColor="@color/white"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textView_greetings"
+            app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <SearchView

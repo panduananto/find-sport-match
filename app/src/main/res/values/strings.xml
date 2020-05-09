@@ -36,6 +36,7 @@
     <string name="greetings_textView">Selamat pagi,</string>
     <string name="usernamePlaceholder_textView">username_placeholder</string>
     <string name="whatSport_textView">Mau olahraga apa hari ini?</string>
+    <string name="logout_textView">Logout</string>
 
     <!-- Ini string match people !-->
     <string name="sportWithFriends_textView">Olahraga bareng temen\nitu lebih seru loh!</string>

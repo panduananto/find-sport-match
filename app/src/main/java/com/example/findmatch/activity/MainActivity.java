@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -11,38 +12,45 @@ import android.widget.TextView;
 import com.example.findmatch.fragment.LoginFragment;
 import com.example.findmatch.R;
 import com.example.findmatch.fragment.RegisterFragment;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private TextView textView_signIn, textView_signUp;
+
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //deklarasi panggil textview sesuai id
-        TextView textView_signIn = (TextView) findViewById(R.id.textView_signIn);
-        textView_signIn.setOnClickListener(this);
+        textView_signIn = (TextView) findViewById(R.id.textView_signIn);
+        textView_signUp = (TextView) findViewById(R.id.textView_signUp);
 
-        TextView textView_signUp = (TextView) findViewById(R.id.textView_signUp);
-        textView_signUp.setOnClickListener(this);
-
-        //deklarasi panggil fragment
         LoginFragment mLoginFragment = new LoginFragment();
-
-        //deklarasi panggil fragment ke main_activity
-        //default fragment yang muncul di main_activity adalah fragment_login
         FragmentManager mFragmentManager = getSupportFragmentManager();
         FragmentTransaction mFragmentTransaction = mFragmentManager.beginTransaction();
 
-        //tambahkan LoginFragment ke dalam screenLoginRegister
-        mFragmentTransaction.add(R.id.screenLoginRegister, mLoginFragment, LoginFragment.class.getSimpleName());
+        mAuth = FirebaseAuth.getInstance();
 
+        textView_signIn.setOnClickListener(this);
+        textView_signUp.setOnClickListener(this);
+
+        if (mAuth.getCurrentUser() != null) {
+            Intent homeIntent = new Intent(getApplicationContext(), HomeActivity.class);
+            startActivity(homeIntent);
+            finish();
+        }
+
+        mFragmentTransaction.add(R.id.screenLoginRegister,
+                mLoginFragment,
+                LoginFragment.class.getSimpleName());
         mFragmentTransaction.commit();
     }
 
     @Override
     public void onClick(View v) {
-        //kalo klik signin pindah ke loginFragment
         if (v.getId() == R.id.textView_signIn) {
             LoginFragment mLoginFragment = new LoginFragment();
             FragmentManager mFragmentManager = getSupportFragmentManager();
@@ -53,7 +61,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             mFragmentTransaction.commit();
         }
-        //kalo klik signup pindah ke registerFragment
         if (v.getId() == R.id.textView_signUp) {
             RegisterFragment mRegisterFragment = new RegisterFragment();
             FragmentManager mFragmentManager = getSupportFragmentManager();
