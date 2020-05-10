@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.provider.MediaStore;
@@ -12,15 +13,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.findmatch.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import javax.annotation.Nullable;
 
@@ -32,10 +40,12 @@ public class ProfileFragment extends Fragment {
     private TextView textViewUserName, textViewBio, textViewFullName;
     private TextView textViewEmail, textViewFullAddress, textViewTelpNumber;
     private ImageView userProfilePicture;
+    private ProgressBar progressBarOnProfile;
 
     private FirebaseAuth mAuth;
     private FirebaseFirestore mFireStore;
     String userId;
+    private StorageReference mStorageReference;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -52,10 +62,12 @@ public class ProfileFragment extends Fragment {
         textViewEmail = (TextView) view.findViewById(R.id.textView_placeholderEmailAddress);
         textViewFullAddress = (TextView) view.findViewById(R.id.textView_placeholderAddress);
         textViewTelpNumber = (TextView) view.findViewById(R.id.textView_placeholderTelpNumber);
+        progressBarOnProfile = (ProgressBar) view.findViewById(R.id.progressBar_onProfilePage);
 
         mAuth = FirebaseAuth.getInstance();
         userId = mAuth.getCurrentUser().getUid();
         mFireStore = FirebaseFirestore.getInstance();
+        mStorageReference = FirebaseStorage.getInstance().getReference();
 
         DocumentReference mDocumentReference = mFireStore.collection("Users").document(userId);
         mDocumentReference.addSnapshotListener(getActivity(), new EventListener<DocumentSnapshot>() {
@@ -90,7 +102,31 @@ public class ProfileFragment extends Fragment {
             if (resultCode == Activity.RESULT_OK) {
                 Uri imageUri = data.getData();
                 userProfilePicture.setImageURI(imageUri);
+
+                uploadImageToFirebase(imageUri);
             }
         }
+    }
+
+    public void uploadImageToFirebase(Uri imageUri) {
+        progressBarOnProfile.setVisibility(View.VISIBLE);
+        StorageReference fileReference = mStorageReference.child("user_profile_picture.jpg");
+        fileReference.putFile(imageUri)
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                progressBarOnProfile.setVisibility(View.GONE);
+                Toast.makeText(getContext(),
+                        "Profile picture changed",
+                        Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getContext(),
+                        "Failed to changed profile picture",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
