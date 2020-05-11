@@ -7,6 +7,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
@@ -40,8 +42,9 @@ public class ProfileFragment extends Fragment {
 
     private TextView textViewUserName, textViewBio, textViewFullName;
     private TextView textViewEmail, textViewFullAddress, textViewTelpNumber;
-    private ImageView userProfilePicture;
+    private ImageView userProfilePicture, imageViewEditProfileIcon;
     private ProgressBar progressBarOnProfile;
+    private TextView textViewEditProfile;
 
     private FirebaseAuth mAuth;
     private FirebaseFirestore mFireStore;
@@ -100,6 +103,22 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        imageViewEditProfileIcon = (ImageView) view.findViewById(R.id.imageView_editProfile);
+        imageViewEditProfileIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getEditUserFragment();
+            }
+        });
+
+        textViewEditProfile = (TextView) view.findViewById(R.id.textView_editProfile);
+        textViewEditProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getEditUserFragment();
+            }
+        });
+
         return view;
     }
 
@@ -139,5 +158,31 @@ public class ProfileFragment extends Fragment {
                         Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void getEditUserFragment() {
+        EditUserDetailInfoFragment mEditUserDetailInfoFragment =
+                new EditUserDetailInfoFragment();
+        FragmentManager mFragmentManager = getFragmentManager();
+        FragmentTransaction mFragmentTransaction = mFragmentManager.beginTransaction();
+        String userNameOld = textViewUserName.getText().toString().trim();
+        String fullNameOld = textViewFullName.getText().toString().trim();
+        String fullAddressOld = textViewFullAddress.getText().toString().trim();
+        String bioOld = textViewBio.getText().toString().trim();
+        String telpNumberOld = textViewTelpNumber.getText().toString().trim();
+
+        Bundle bundle = new Bundle();
+        bundle.putString("userNameOld", userNameOld);
+        bundle.putString("fullNameOld", fullNameOld);
+        bundle.putString("fullAddressOld", fullAddressOld);
+        bundle.putString("bioOld", bioOld);
+        bundle.putString("telpNumberOld", telpNumberOld);
+        mEditUserDetailInfoFragment.setArguments(bundle);
+
+        mFragmentTransaction.add(R.id.screenHome,
+                mEditUserDetailInfoFragment,
+                EditUserDetailInfoFragment.class.getSimpleName());
+        mFragmentTransaction.addToBackStack(null);
+        mFragmentTransaction.commit();
     }
 }

@@ -110,6 +110,11 @@
         <item>5/10 pemain</item>
     </string-array>
 
+    <!-- Ini string edit profile info !-->
+    <string name="headerEditProfile_textView">Lagi ngedit info</string>
+    <string name="editYourProfileHere_textView">Anda lagi ngedit informasi pribadi nih!</string>
+    <string name="btn_saveEdit">SAVE</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:elevation="10dp"
     tools:context=".fragment.UserDetailInfoRegisterFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,12 +25,11 @@
             android:layout_marginStart="25dp"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/roboto_medium"
-            android:text="@string/headerUserInfoDetail_textView"
+            android:text="@string/headerEditProfile_textView"
             android:textColor="@color/white"
             android:textSize="28sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView_backArrowOnEditProfile">
-        </TextView>
+            app:layout_constraintTop_toBottomOf="@+id/imageView_backArrowOnEditProfile"/>
 
         <TextView
             android:id="@+id/textView_editYourProfileHere"
@@ -37,12 +37,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:fontFamily="@font/roboto_light"
-            android:text="@string/inputYourProfileHere_textView"
+            android:text="@string/editYourProfileHere_textView"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_headerEditProfileInfo">
-        </TextView>
+            app:layout_constraintTop_toBottomOf="@+id/textView_headerEditProfileInfo"/>
 
         <ImageView
             android:id="@+id/imageView_backArrowOnEditProfile"
@@ -52,8 +51,7 @@
             android:layout_marginTop="25dp"
             android:src="@drawable/ic_arrow_back_white_36dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-        </ImageView>
+            app:layout_constraintTop_toTopOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
@@ -67,8 +65,7 @@
         android:textColor="@color/darkestGray"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/container_topEditUserInfo">
-    </TextView>
+        app:layout_constraintTop_toBottomOf="@+id/container_topEditUserInfo"/>
 
     <EditText
         android:id="@+id/editText_userNameOnEdit"
@@ -84,8 +81,7 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_userNameOnEdit">
-    </EditText>
+        app:layout_constraintTop_toBottomOf="@+id/textView_userNameOnEdit"/>
 
     <TextView
         android:id="@+id/textView_fullNameOnEdit"
@@ -98,8 +94,7 @@
         android:textColor="@color/darkestGray"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_userNameOnEdit">
-    </TextView>
+        app:layout_constraintTop_toBottomOf="@+id/editText_userNameOnEdit"/>
 
     <EditText
         android:id="@+id/editText_fullNameOnEdit"
@@ -115,8 +110,7 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_fullNameOnEdit">
-    </EditText>
+        app:layout_constraintTop_toBottomOf="@+id/textView_fullNameOnEdit"/>
 
     <TextView
         android:id="@+id/textView_fullAddressOnEdit"
@@ -129,8 +123,7 @@
         android:textColor="@color/darkestGray"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_fullNameOnEdit">
-    </TextView>
+        app:layout_constraintTop_toBottomOf="@+id/editText_fullNameOnEdit"/>
 
     <EditText
         android:id="@+id/editText_fullAddressOnEdit"
@@ -146,8 +139,7 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_fullAddressOnEdit">
-    </EditText>
+        app:layout_constraintTop_toBottomOf="@+id/textView_fullAddressOnEdit"/>
 
     <TextView
         android:id="@+id/textView_bioOnEdit"
@@ -160,8 +152,7 @@
         android:textColor="@color/darkestGray"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_fullAddressOnEdit">
-    </TextView>
+        app:layout_constraintTop_toBottomOf="@+id/editText_fullAddressOnEdit"/>
 
     <EditText
         android:id="@+id/editText_bioOnEdit"
@@ -177,8 +168,7 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_bioOnEdit">
-    </EditText>
+        app:layout_constraintTop_toBottomOf="@+id/textView_bioOnEdit"/>
 
     <TextView
         android:id="@+id/textView_telpNumberOnEdit"
@@ -191,8 +181,7 @@
         android:textColor="@color/darkestGray"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_bioOnEdit">
-    </TextView>
+        app:layout_constraintTop_toBottomOf="@+id/editText_bioOnEdit"/>
 
     <EditText
         android:id="@+id/editText_telpNumberOnEdit"
@@ -209,8 +198,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.452"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_telpNumberOnEdit">
-    </EditText>
+        app:layout_constraintTop_toBottomOf="@+id/textView_telpNumberOnEdit"/>
 
     <Button
         android:id="@+id/button_saveEditProfile"
@@ -220,11 +208,10 @@
         android:layout_marginTop="25dp"
         android:background="@drawable/button_shape"
         android:fontFamily="@font/montserrat_bold"
-        android:text="@string/signup_button"
+        android:text="@string/btn_saveEdit"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_telpNumberOnEdit">
-    </Button>
+        app:layout_constraintTop_toBottomOf="@+id/editText_telpNumberOnEdit"/>
 
     <Button
         android:id="@+id/button_resetInputEdit"
@@ -237,7 +224,7 @@
         android:text="@string/reset_button"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_telpNumberOnEdit"></Button>
+        app:layout_constraintTop_toBottomOf="@+id/editText_telpNumberOnEdit"/>
 
     <ProgressBar
         android:id="@+id/progressBar_onCompleteEdit"
@@ -248,6 +235,5 @@
         app:layout_constraintBottom_toTopOf="@+id/editText_bioOnEdit"
         app:layout_constraintEnd_toEndOf="@+id/editText_fullAddressOnEdit"
         app:layout_constraintStart_toStartOf="@+id/editText_fullAddressOnEdit"
-        app:layout_constraintTop_toBottomOf="@+id/editText_fullNameOnEdit">
-    </ProgressBar>
+        app:layout_constraintTop_toBottomOf="@+id/editText_fullNameOnEdit"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

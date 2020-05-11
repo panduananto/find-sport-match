@@ -1,6 +1,5 @@
 package com.example.findmatch.fragment;
 
-import android.media.Image;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -24,7 +23,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -55,19 +53,19 @@ public class UserDetailInfoRegisterFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_user_detail_info_register, container, false);
-        editTextUserName = (EditText) view.findViewById(R.id.editText_userName);
-        editTextUserFullName = (EditText) view.findViewById(R.id.editText_fullName);
-        editTextUserFullAddress = (EditText) view.findViewById(R.id.editText_fullAddress);
-        editTextUserBio = (EditText) view.findViewById(R.id.editText_bio);
-        editTextUserTelpNumber = (EditText) view.findViewById(R.id.editText_telpNumber);
-        progressBarComplete = (ProgressBar) view.findViewById(R.id.progressBar_onComplete);
+        editTextUserName = (EditText) view.findViewById(R.id.editText_userNameOnEdit);
+        editTextUserFullName = (EditText) view.findViewById(R.id.editText_fullNameOnEdit);
+        editTextUserFullAddress = (EditText) view.findViewById(R.id.editText_fullAddressOnEdit);
+        editTextUserBio = (EditText) view.findViewById(R.id.editText_bioOnEdit);
+        editTextUserTelpNumber = (EditText) view.findViewById(R.id.editText_telpNumberOnEdit);
+        progressBarComplete = (ProgressBar) view.findViewById(R.id.progressBar_onCompleteEdit);
 
         Bundle bundle = getArguments();
         final String emailInputFromFragment = bundle.getString("emailInput");
         final String passwordInputFromFragment = bundle.getString("passwordInput");
 
         imageViewBackArrow = (ImageView) view
-                .findViewById(R.id.imageView_backArrow);
+                .findViewById(R.id.imageView_backArrowOnEditProfile);
         imageViewBackArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,7 +75,7 @@ public class UserDetailInfoRegisterFragment extends Fragment {
             }
         });
         buttonSignUpComplete = (Button) view
-                .findViewById(R.id.button_signUpComplete);
+                .findViewById(R.id.button_saveEditProfile);
         buttonSignUpComplete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
