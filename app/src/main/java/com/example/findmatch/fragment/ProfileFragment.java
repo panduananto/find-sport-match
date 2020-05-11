@@ -29,6 +29,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import javax.annotation.Nullable;
 
@@ -63,11 +64,19 @@ public class ProfileFragment extends Fragment {
         textViewFullAddress = (TextView) view.findViewById(R.id.textView_placeholderAddress);
         textViewTelpNumber = (TextView) view.findViewById(R.id.textView_placeholderTelpNumber);
         progressBarOnProfile = (ProgressBar) view.findViewById(R.id.progressBar_onProfilePage);
+        userProfilePicture = (ImageView) view.findViewById(R.id.imageView_photoProfile);
 
         mAuth = FirebaseAuth.getInstance();
         userId = mAuth.getCurrentUser().getUid();
         mFireStore = FirebaseFirestore.getInstance();
         mStorageReference = FirebaseStorage.getInstance().getReference();
+        StorageReference profileReference = mStorageReference.child("user_profile_picture.jpg");
+        profileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).into(userProfilePicture);
+            }
+        });
 
         DocumentReference mDocumentReference = mFireStore.collection("Users").document(userId);
         mDocumentReference.addSnapshotListener(getActivity(), new EventListener<DocumentSnapshot>() {
@@ -83,7 +92,6 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        userProfilePicture = (ImageView) view.findViewById(R.id.imageView_photoProfile);
         userProfilePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,8 +109,6 @@ public class ProfileFragment extends Fragment {
         if (requestCode == 1000) {
             if (resultCode == Activity.RESULT_OK) {
                 Uri imageUri = data.getData();
-                userProfilePicture.setImageURI(imageUri);
-
                 uploadImageToFirebase(imageUri);
             }
         }
@@ -110,12 +116,20 @@ public class ProfileFragment extends Fragment {
 
     public void uploadImageToFirebase(Uri imageUri) {
         progressBarOnProfile.setVisibility(View.VISIBLE);
-        StorageReference fileReference = mStorageReference.child("user_profile_picture.jpg");
+        final StorageReference fileReference = mStorageReference
+                .child("user_profile_picture.jpg");
         fileReference.putFile(imageUri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                progressBarOnProfile.setVisibility(View.GONE);
+                fileReference.getDownloadUrl()
+                        .addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        progressBarOnProfile.setVisibility(View.GONE);
+                        Picasso.get().load(uri).into(userProfilePicture);
+                    }
+                });
                 Toast.makeText(getContext(),
                         "Profile picture changed",
                         Toast.LENGTH_SHORT).show();
