@@ -70,7 +70,7 @@ public class ProfileFragment extends Fragment {
         userId = mAuth.getCurrentUser().getUid();
         mFireStore = FirebaseFirestore.getInstance();
         mStorageReference = FirebaseStorage.getInstance().getReference();
-        StorageReference profileReference = mStorageReference.child("user_profile_picture.jpg");
+        StorageReference profileReference = mStorageReference.child("users/" + userId + "/user_profile_picture.jpg");
         profileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
@@ -116,14 +116,11 @@ public class ProfileFragment extends Fragment {
 
     public void uploadImageToFirebase(Uri imageUri) {
         progressBarOnProfile.setVisibility(View.VISIBLE);
-        final StorageReference fileReference = mStorageReference
-                .child("user_profile_picture.jpg");
-        fileReference.putFile(imageUri)
-                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+        final StorageReference fileReference = mStorageReference.child("users/" + userId + "/user_profile_picture.jpg");
+        fileReference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                fileReference.getDownloadUrl()
-                        .addOnSuccessListener(new OnSuccessListener<Uri>() {
+                fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
                         progressBarOnProfile.setVisibility(View.GONE);
