@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -31,6 +32,8 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import javax.annotation.Nullable;
@@ -42,9 +45,9 @@ public class ProfileFragment extends Fragment {
 
     private TextView textViewUserName, textViewBio, textViewFullName;
     private TextView textViewEmail, textViewFullAddress, textViewTelpNumber;
-    private ImageView userProfilePicture, imageViewEditProfileIcon;
+    private ImageView userProfilePicture;
     private ProgressBar progressBarOnProfile;
-    private TextView textViewEditProfile;
+    private ConstraintLayout containerAsButtonEditProfile;
 
     private FirebaseAuth mAuth;
     private FirebaseFirestore mFireStore;
@@ -77,7 +80,7 @@ public class ProfileFragment extends Fragment {
         profileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
-                Picasso.get().load(uri).into(userProfilePicture);
+                loadImageFromMemory(uri);
             }
         });
 
@@ -103,16 +106,9 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        imageViewEditProfileIcon = (ImageView) view.findViewById(R.id.imageView_editProfile);
-        imageViewEditProfileIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getEditUserFragment();
-            }
-        });
-
-        textViewEditProfile = (TextView) view.findViewById(R.id.textView_editProfile);
-        textViewEditProfile.setOnClickListener(new View.OnClickListener() {
+        containerAsButtonEditProfile = (ConstraintLayout) view
+                .findViewById(R.id.containerButtonEditProfile);
+        containerAsButtonEditProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getEditUserFragment();
@@ -131,6 +127,20 @@ public class ProfileFragment extends Fragment {
                 uploadImageToFirebase(imageUri);
             }
         }
+    }
+
+    public void loadImageFromMemory(final Uri uri) {
+        Picasso.get().load(uri).fetch(new Callback() {
+            @Override
+            public void onSuccess() {
+                Picasso.get().load(uri).networkPolicy(NetworkPolicy.OFFLINE).into(userProfilePicture);
+            }
+
+            @Override
+            public void onError(Exception e) {
+                Toast.makeText(getContext(), "Failed to load profile picture", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void uploadImageToFirebase(Uri imageUri) {
