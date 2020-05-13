@@ -10,58 +10,59 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.findmatch.R;
+import com.example.findmatch.model.SportItemModel;
 
-public class SportItemAdapter extends RecyclerView.Adapter<SportItemAdapter.MyViewHolder> {
+import java.util.List;
 
-    String mSportName[];
-    int mSportImage[];
-    Context mContext;
+public class SportItemAdapter extends RecyclerView.Adapter<SportItemAdapter.SportItemViewHolder> {
 
-    //constructor
-    public SportItemAdapter(Context context, String sportName[], int sportImage[]) {
-        mContext = context;
-        mSportName = sportName;
-        mSportImage = sportImage;
+    private List<SportItemModel> mSportItemModel;
+
+    public void setmSportItemModel(List<SportItemModel> mSportItemModel) {
+        this.mSportItemModel = mSportItemModel;
     }
 
-    //inisiasi viewholder untuk menentukan view mana yang digunakan untuk menampilkan data
-    //data yang akan ditampilkan adalah string-array sportName menuju ke textView_sportName
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    @NonNull
+    @Override
+    public SportItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        View view = inflater.inflate(R.layout.item_card_view, parent, false);
+        SportItemViewHolder sportViewHolder = new SportItemViewHolder(view);
 
+        return sportViewHolder;
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull SportItemViewHolder holder, int position) {
+        holder.textView_sportName.setText(mSportItemModel.get(position).getSport_name());
+
+        String imageUri = mSportItemModel.get(position).getSport_image();
+        Glide.with(holder.itemView.getContext())
+                .load(imageUri)
+                .centerCrop()
+                .placeholder(R.drawable.card_shape)
+                .into(holder.imageView_sportImage);
+    }
+
+    @Override
+    public int getItemCount() {
+        if (mSportItemModel == null) {
+            return 0;
+        } else {
+            return mSportItemModel.size();
+        }
+    }
+
+    public class SportItemViewHolder extends RecyclerView.ViewHolder {
         TextView textView_sportName;
         ImageView imageView_sportImage;
 
-        public MyViewHolder(@NonNull View itemView) {
+        public SportItemViewHolder(@NonNull View itemView) {
             super(itemView);
             textView_sportName = itemView.findViewById(R.id.textView_sportName);
             imageView_sportImage = itemView.findViewById(R.id.imageView_sportImage);
         }
-    }
-
-    //panggil view yang akan digunakan sebagai penampung item list
-    //view nya adalah berupa CardView yang terdapat pada file layout item_card_view
-    @NonNull
-    @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(mContext);
-        View view = inflater.inflate(R.layout.item_card_view, parent, false);
-        MyViewHolder vh = new MyViewHolder(view);
-        return vh;
-    }
-
-    //untuk mendapatkan informasi index dari data yang akan ditampilkan
-    //karena data berbentuk string-array
-    @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.textView_sportName.setText(mSportName[position]);
-        holder.imageView_sportImage.setImageResource(mSportImage[position]);
-    }
-
-    //untuk mendapatkan informasi jumlah data yang akan ditampilkan
-    @Override
-    public int getItemCount() {
-        return mSportName.length;
-        /*return mSportImage.length;*/
     }
 }

@@ -20,6 +20,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.findmatch.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -62,7 +63,7 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        final View view = inflater.inflate(R.layout.fragment_profile, container, false);
         textViewUserName = (TextView) view.findViewById(R.id.textView_usernameOnProfile);
         textViewBio = (TextView) view.findViewById(R.id.textView_profileDescription);
         textViewFullName = (TextView) view.findViewById(R.id.textView_placeholderName);
@@ -80,7 +81,7 @@ public class ProfileFragment extends Fragment {
         profileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
-                loadImageFromMemory(uri);
+                Glide.with(view.getContext()).load(uri).into(userProfilePicture);
             }
         });
 
@@ -106,8 +107,7 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        containerAsButtonEditProfile = (ConstraintLayout) view
-                .findViewById(R.id.containerButtonEditProfile);
+        containerAsButtonEditProfile = (ConstraintLayout) view.findViewById(R.id.containerButtonEditProfile);
         containerAsButtonEditProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -129,20 +129,6 @@ public class ProfileFragment extends Fragment {
         }
     }
 
-    public void loadImageFromMemory(final Uri uri) {
-        Picasso.get().load(uri).fetch(new Callback() {
-            @Override
-            public void onSuccess() {
-                Picasso.get().load(uri).networkPolicy(NetworkPolicy.OFFLINE).into(userProfilePicture);
-            }
-
-            @Override
-            public void onError(Exception e) {
-                Toast.makeText(getContext(), "Failed to load profile picture", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
     public void uploadImageToFirebase(Uri imageUri) {
         progressBarOnProfile.setVisibility(View.VISIBLE);
         final StorageReference fileReference = mStorageReference.child("users/" + userId + "/user_profile_picture.jpg");
@@ -153,7 +139,7 @@ public class ProfileFragment extends Fragment {
                     @Override
                     public void onSuccess(Uri uri) {
                         progressBarOnProfile.setVisibility(View.GONE);
-                        Picasso.get().load(uri).into(userProfilePicture);
+                        Glide.with(getView().getContext()).load(uri).into(userProfilePicture);
                     }
                 });
                 Toast.makeText(getContext(),
@@ -171,8 +157,7 @@ public class ProfileFragment extends Fragment {
     }
 
     public void getEditUserFragment() {
-        EditUserDetailInfoFragment mEditUserDetailInfoFragment =
-                new EditUserDetailInfoFragment();
+        EditUserDetailInfoFragment mEditUserDetailInfoFragment = new EditUserDetailInfoFragment();
         FragmentManager mFragmentManager = getFragmentManager();
         FragmentTransaction mFragmentTransaction = mFragmentManager.beginTransaction();
         String userNameOld = textViewUserName.getText().toString().trim();
@@ -189,9 +174,7 @@ public class ProfileFragment extends Fragment {
         bundle.putString("telpNumberOld", telpNumberOld);
         mEditUserDetailInfoFragment.setArguments(bundle);
 
-        mFragmentTransaction.add(R.id.screenHome,
-                mEditUserDetailInfoFragment,
-                EditUserDetailInfoFragment.class.getSimpleName());
+        mFragmentTransaction.add(R.id.screenHome, mEditUserDetailInfoFragment, EditUserDetailInfoFragment.class.getSimpleName());
         mFragmentTransaction.addToBackStack(null);
         mFragmentTransaction.commit();
     }

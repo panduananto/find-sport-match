@@ -23,6 +23,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -58,6 +59,24 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         return view;
     }
 
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.button_login) {
+            loginUser();
+        }
+
+        if (v.getId() == R.id.textView_noAccountYet) {
+            RegisterFragment mRegisterFragment = new RegisterFragment();
+            FragmentManager mFragmentManager = getFragmentManager();
+            FragmentTransaction mFragmentTransaction = mFragmentManager.beginTransaction();
+
+            mFragmentTransaction.replace(R.id.screenLoginRegister, mRegisterFragment, RegisterFragment.class.getSimpleName());
+            mFragmentTransaction.addToBackStack(null);
+
+            mFragmentTransaction.commit();
+        }
+    }
+
     public void loginUser() {
         final String emailInput = editTextEmail.getText().toString().trim();
         final String passwordInput = editTextPassword.getText().toString().trim();
@@ -90,26 +109,5 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                 }
             }
         });
-    }
-
-    @Override
-    public void onClick(View v) {
-        if (v.getId() == R.id.button_login) {
-            loginUser();
-        }
-
-        if (v.getId() == R.id.textView_noAccountYet) {
-            RegisterFragment mRegisterFragment = new RegisterFragment();
-            FragmentManager mFragmentManager = getFragmentManager();
-            FragmentTransaction mFragmentTransaction = mFragmentManager.beginTransaction();
-
-            mFragmentTransaction
-                    .replace(R.id.screenLoginRegister,
-                            mRegisterFragment,
-                            RegisterFragment.class.getSimpleName());
-            mFragmentTransaction.addToBackStack(null);
-
-            mFragmentTransaction.commit();
-        }
     }
 }

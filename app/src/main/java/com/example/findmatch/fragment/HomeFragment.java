@@ -64,13 +64,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         textViewLogout.setOnClickListener(this);
 
-        RecyclerCardFragment mRecyclerCardFragment = new RecyclerCardFragment();
+        SportItemFragment mRecyclerCardFragment = new SportItemFragment();
         FragmentManager mFragmentManager = getChildFragmentManager();
         FragmentTransaction mFragmentTransaction = mFragmentManager.beginTransaction();
         mFragmentTransaction
                 .add(R.id.container_recyclerViewOnFragmentHome,
                         mRecyclerCardFragment,
-                        RecyclerCardFragment.class.getSimpleName());
+                        SportItemFragment.class.getSimpleName());
 
         mFragmentTransaction.commit();
 

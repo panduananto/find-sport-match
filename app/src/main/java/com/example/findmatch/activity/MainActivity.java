@@ -13,6 +13,7 @@ import com.example.findmatch.fragment.LoginFragment;
 import com.example.findmatch.R;
 import com.example.findmatch.fragment.RegisterFragment;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -37,16 +38,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         textView_signIn.setOnClickListener(this);
         textView_signUp.setOnClickListener(this);
 
-        if (mAuth.getCurrentUser() != null) {
+        mFragmentTransaction.add(R.id.screenLoginRegister, mLoginFragment, LoginFragment.class.getSimpleName());
+        mFragmentTransaction.commit();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
             Intent homeIntent = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(homeIntent);
             finish();
         }
-
-        mFragmentTransaction.add(R.id.screenLoginRegister,
-                mLoginFragment,
-                LoginFragment.class.getSimpleName());
-        mFragmentTransaction.commit();
     }
 
     @Override

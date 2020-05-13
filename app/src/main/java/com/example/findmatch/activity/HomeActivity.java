@@ -32,9 +32,7 @@ public class HomeActivity extends AppCompatActivity {
 
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
-        mFragmentTransaction.add(R.id.fragment_container,
-                mHomeFragment,
-                HomeFragment.class.getSimpleName());
+        mFragmentTransaction.add(R.id.fragment_container, mHomeFragment, HomeFragment.class.getSimpleName());
         mFragmentTransaction.commit();
     }
 
@@ -58,7 +56,7 @@ public class HomeActivity extends AppCompatActivity {
                     }
                     getSupportFragmentManager()
                             .beginTransaction()
-                            .replace(R.id.fragment_container, selectedFragment).commit();
+                            .replace(R.id.fragment_container, selectedFragment).addToBackStack(null).commit();
 
                     return true;
                 }

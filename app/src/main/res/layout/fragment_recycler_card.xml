@@ -11,7 +11,7 @@
     android:scrollbars="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     app:layout_constraintBottom_toBottomOf="@id/container_recyclerViewOnFragmentHome"
-    tools:context=".fragment.RecyclerCardFragment">
+    tools:context=".fragment.SportItemFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
