@@ -12,12 +12,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.findmatch.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -25,6 +29,9 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.annotation.Nullable;
 
@@ -34,6 +41,7 @@ import javax.annotation.Nullable;
 public class MatchOwnerFragment extends Fragment {
 
     private String TAG_MATCHUSER = "MATCHUSER_TAG";
+    private String documentId;
 
     private TextView textViewSportTagOwner, textViewSportTitleOwner;
     private TextView textViewSportAddressLocationOwner, textViewStatusPlayOwner;
@@ -52,6 +60,7 @@ public class MatchOwnerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         View view = inflater.inflate(R.layout.fragment_match_owner, container, false);
         textViewSportTagOwner = (TextView) view.findViewById(R.id.textView_sportTagOther);
         textViewSportTitleOwner = (TextView) view.findViewById(R.id.textView_sportTitleOther);
@@ -84,6 +93,7 @@ public class MatchOwnerFragment extends Fragment {
                         textViewCurrentPlayer.setText(document.getString("currentPlayer"));
                         textViewMaxPlayer.setText(document.getString("maxPlayer"));
                     }
+                    documentId = document.getId();
                 }
             }
         });
@@ -92,7 +102,20 @@ public class MatchOwnerFragment extends Fragment {
         buttonFinishMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().remove(MatchOwnerFragment.this).commit();
+                DocumentReference mDocumentReference = mFireStore.collection("MatchUser").document(documentId);
+                Map<String, Object> updateStatusMatch = new HashMap<>();
+                updateStatusMatch.put("statusMatch", "finish");
+                mDocumentReference.update(updateStatusMatch).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(getContext(), "Match finished!", Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getContext(), "Failed updating data!", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
 
