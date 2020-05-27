@@ -36,9 +36,9 @@ public class SportItemAdapter extends RecyclerView.Adapter<SportItemAdapter.Spor
 
     @Override
     public void onBindViewHolder(@NonNull SportItemViewHolder holder, int position) {
-        holder.textView_sportName.setText(mSportItemModel.get(position).getSport_name());
+        holder.textView_sportName.setText(mSportItemModel.get(position).getSportName());
 
-        String imageUri = mSportItemModel.get(position).getSport_image();
+        String imageUri = mSportItemModel.get(position).getSportImage();
         Glide.with(holder.itemView.getContext())
                 .load(imageUri)
                 .centerCrop()

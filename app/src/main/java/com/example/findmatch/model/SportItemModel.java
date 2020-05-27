@@ -1,40 +1,43 @@
 package com.example.findmatch.model;
 
-public class SportItemModel {
+import com.google.firebase.firestore.IgnoreExtraProperties;
 
-    private String sport_item_id;
-    private String sport_image, sport_name;
+@IgnoreExtraProperties
+public class SportItemModel {
+    private String sportItemId;
+    private String sportImage, sportName;
 
     public SportItemModel() {
+
     }
 
-    public SportItemModel(String sport_item_id, String sport_image, String sport_name) {
-        this.sport_item_id = sport_item_id;
-        this.sport_image = sport_image;
-        this.sport_name = sport_name;
+    public SportItemModel(String sportItemId, String sportImage, String sportName) {
+        this.sportItemId = sportItemId;
+        this.sportImage = sportImage;
+        this.sportName = sportName;
     }
 
-    public String getSport_item_id() {
-        return sport_item_id;
+    public String getSportItemId() {
+        return sportItemId;
     }
 
-    public void setSport_item_id(String sport_item_id) {
-        this.sport_item_id = sport_item_id;
+    public void setSportItemId(String sportItemId) {
+        this.sportItemId = sportItemId;
     }
 
-    public String getSport_image() {
-        return sport_image;
+    public String getSportImage() {
+        return sportImage;
     }
 
-    public void setSport_image(String sport_image) {
-        this.sport_image = sport_image;
+    public void setSportImage(String sportImage) {
+        this.sportImage = sportImage;
     }
 
-    public String getSport_name() {
-        return sport_name;
+    public String getSportName() {
+        return sportName;
     }
 
-    public void setSport_name(String sport_name) {
-        this.sport_name = sport_name;
+    public void setSportName(String sportName) {
+        this.sportName = sportName;
     }
 }

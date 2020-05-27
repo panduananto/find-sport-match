@@ -5,11 +5,11 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.findmatch.model.SportItemModel;
-import com.example.findmatch.repository.FirebaseRepository;
+import com.example.findmatch.repository.SportItemRepository;
 
 import java.util.List;
 
-public class SportItemViewModel extends ViewModel implements FirebaseRepository.OnFireStoreTaskComplete {
+public class SportItemViewModel extends ViewModel implements SportItemRepository.OnFireStoreTaskComplete {
 
     private MutableLiveData<List<SportItemModel>> sportItemModelData = new MutableLiveData<>();
 
@@ -17,10 +17,10 @@ public class SportItemViewModel extends ViewModel implements FirebaseRepository.
         return sportItemModelData;
     }
 
-    private FirebaseRepository mFirebaseRepository = new FirebaseRepository(this);
+    private SportItemRepository mSportItemRepository = new SportItemRepository(this);
 
     public SportItemViewModel() {
-        mFirebaseRepository.getSportItem();
+        mSportItemRepository.getSportItem();
     }
 
     @Override

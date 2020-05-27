@@ -52,7 +52,6 @@ public class SportItemFragment extends Fragment {
         mSportItemAdapter = new SportItemAdapter();
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(mSportItemAdapter);
     }
 
