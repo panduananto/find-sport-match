@@ -52,7 +52,7 @@ public class ProfileFragment extends Fragment {
 
     private FirebaseAuth mAuth;
     private FirebaseFirestore mFireStore;
-    String userId;
+    private String userId;
     private StorageReference mStorageReference;
 
     public ProfileFragment() {

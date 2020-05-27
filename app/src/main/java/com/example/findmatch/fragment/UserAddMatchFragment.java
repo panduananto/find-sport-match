@@ -13,9 +13,9 @@ import com.example.findmatch.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class UserAddMatch extends Fragment {
+public class UserAddMatchFragment extends Fragment {
 
-    public UserAddMatch() {
+    public UserAddMatchFragment() {
         // Required empty public constructor
     }
 

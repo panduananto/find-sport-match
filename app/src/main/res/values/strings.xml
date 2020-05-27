@@ -79,17 +79,21 @@
 
     <!-- Ini string card match people !-->
     <string name="sportTagPlaceholder_textView">sportTag_placeholder</string>
-    <string name="sportLocationPlaceholder_textView">sportLocation_placeholder</string>
+    <string name="sportTitlePlaceholder_textView">sportTitle_placeholder</string>
     <string name="sportAddressLocationPlaceholder_textView">sportAddressLocation_placeholder</string>
     <string name="statusPlayPlaceholder_textView">statusPlay_placeholder</string>
     <string name="spotAvailablePlaceholder_textView">spotAvailable_placeholder</string>
+    <string name="currentPlayer_textView">currentPlayer</string>
+    <string name="slash">/</string>
+    <string name="maxPlayer_textView">maxPlayer</string>
     <string name="button_joinMatch">JOIN</string>
+    <string name="button_finishMatch">FINISH</string>
     <string-array name="sportTag">
         <item>Bulutangkis</item>
         <item>Renang</item>
         <item>Basket</item>
     </string-array>
-    <string-array name="sportLocation">
+    <string-array name="sportTitle">
         <item>Bultang GOR Djaya</item>
         <item>Citos Swimming Pool</item>
         <item>Basketball Court Kecapi</item>

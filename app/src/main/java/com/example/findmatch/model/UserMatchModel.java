@@ -1,17 +1,23 @@
 package com.example.findmatch.model;
 
-public class MatchItemModel {
+import com.google.firebase.firestore.IgnoreExtraProperties;
+
+@IgnoreExtraProperties
+public class UserMatchModel {
     private String matchItemId, userId;
     private String sportTag, sportTitle, sportAddressLocation;
     private String currentPlayer, maxPlayer;
     private String statusMatch, statusPlay;
 
-    public MatchItemModel() {
+    public UserMatchModel() {
 
     }
 
-    public MatchItemModel(String matchItemId, String userId, String sportTag, String sportTitle, String sportAddressLocation,
-                          String currentPlayer, String maxPlayer, String statusMatch, String statusPlay) {
+    public UserMatchModel(String matchItemId, String userId, String sportTag,
+                          String sportTitle, String sportAddressLocation,
+                          String currentPlayer, String maxPlayer,
+                          String statusMatch, String statusPlay) {
+
         this.matchItemId = matchItemId;
         this.userId = userId;
         this.sportTag = sportTag;

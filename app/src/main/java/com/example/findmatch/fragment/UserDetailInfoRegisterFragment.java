@@ -64,18 +64,15 @@ public class UserDetailInfoRegisterFragment extends Fragment {
         final String emailInputFromFragment = bundle.getString("emailInput");
         final String passwordInputFromFragment = bundle.getString("passwordInput");
 
-        imageViewBackArrow = (ImageView) view
-                .findViewById(R.id.imageView_backArrowOnEditProfile);
+        imageViewBackArrow = (ImageView) view.findViewById(R.id.imageView_backArrowOnEditProfile);
         imageViewBackArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager mFragmentManager = getActivity()
-                        .getSupportFragmentManager();
+                FragmentManager mFragmentManager = getActivity().getSupportFragmentManager();
                 mFragmentManager.popBackStack();
             }
         });
-        buttonSignUpComplete = (Button) view
-                .findViewById(R.id.button_saveEditProfile);
+        buttonSignUpComplete = (Button) view.findViewById(R.id.button_saveEditProfile);
         buttonSignUpComplete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

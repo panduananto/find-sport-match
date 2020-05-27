@@ -1,60 +1,64 @@
 package com.example.findmatch.repository;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
-import com.example.findmatch.model.MatchItemModel;
 import com.example.findmatch.model.SportItemModel;
+import com.example.findmatch.model.UserMatchModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class FirebaseRepository {
+import javax.annotation.Nullable;
+
+public class UserMatchRepository {
+
+    private static final String TAG_USER_MATCH = "TAG_USER_MATCH";
 
     private OnFireStoreTaskComplete onFireStoreTaskComplete;
 
     private FirebaseFirestore mFirebaseRepository = FirebaseFirestore.getInstance();
-    private CollectionReference sportItemRef = mFirebaseRepository.collection("SportItem");
-    private CollectionReference matchItemRef = mFirebaseRepository.collection("MatchUser");
-    private Query matchItemQuery = matchItemRef.whereEqualTo("statusMatch", "play");
+    private CollectionReference userMatchRef = mFirebaseRepository.collection("MatchUser");
+    private Query userMatchQuery = userMatchRef.whereEqualTo("statusMatch", "play");
 
-    public FirebaseRepository(OnFireStoreTaskComplete onFireStoreTaskComplete) {
+    public UserMatchRepository(OnFireStoreTaskComplete onFireStoreTaskComplete) {
         this.onFireStoreTaskComplete = onFireStoreTaskComplete;
     }
 
-    public void getSportItem() {
-        sportItemRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+    public void getUserMatch() {
+        userMatchQuery.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful()) {
-                    onFireStoreTaskComplete.sportItemDataAdded(task.getResult().toObjects(SportItemModel.class));
-                } else {
-                    onFireStoreTaskComplete.onError(task.getException());
-                }
-            }
-        });
-    }
+            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots,
+                                @Nullable FirebaseFirestoreException e) {
 
-    public void getMatchItem() {
-        matchItemQuery.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful()) {
-                    onFireStoreTaskComplete.matchItemDataAdded(task.getResult().toObjects(MatchItemModel.class));
-                } else {
-                    onFireStoreTaskComplete.onError(task.getException());
+                if (e != null) {
+                    Log.w(TAG_USER_MATCH, "Listen failed.", e);
+                    return;
                 }
+
+                List<UserMatchModel> userMatchList = new ArrayList<>();
+                for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
+                    if (document.exists()) {
+                        userMatchList.add(document.toObject(UserMatchModel.class));
+                    }
+                }
+                onFireStoreTaskComplete.userMatchDataAdded(userMatchList);
             }
         });
     }
 
     public interface OnFireStoreTaskComplete {
-        void sportItemDataAdded(List<SportItemModel> sportItemModelList);
-        void matchItemDataAdded(List<MatchItemModel> matchItemModelList);
+        void userMatchDataAdded(List<UserMatchModel> userMatchModelList);
         void onError(Exception e);
     }
 }

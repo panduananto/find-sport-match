@@ -22,84 +22,112 @@
             android:layout_height="match_parent"
             android:background="@drawable/match_card_shape">
 
-            <TextView
-                android:id="@+id/textView_sportTag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
-                android:fontFamily="@font/roboto_bold"
-                android:text="@string/sportTagPlaceholder_textView"
-                android:textColor="@color/gray"
-                android:textSize="12sp"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                app:layout_constraintBottom_toTopOf="@+id/button_join_match"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/textView_sportLocation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginEnd="20dp"
-                android:fontFamily="@font/roboto_medium"
-                android:text="@string/sportLocationPlaceholder_textView"
-                android:textColor="@color/darkestGray"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView_sportTag" />
+                <TextView
+                    android:id="@+id/textView_sportTagOther"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/sportTagPlaceholder_textView"
+                    android:textColor="@color/gray"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/textView_sportAddressLocation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginEnd="20dp"
-                android:fontFamily="@font/roboto"
-                android:text="@string/sportAddressLocationPlaceholder_textView"
-                android:textColor="@color/darkestGray"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView_sportLocation" />
+                <TextView
+                    android:id="@+id/textView_sportTitleOther"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/sportTitlePlaceholder_textView"
+                    android:textColor="@color/darkestGray"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_sportTagOther" />
 
-            <TextView
-                android:id="@+id/textView_statusPlay"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/status_play_shape"
-                android:fontFamily="@font/montserrat_bold"
-                android:text="@string/statusPlayPlaceholder_textView"
-                android:textColor="@color/blue"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView_sportAddressLocation" />
+                <TextView
+                    android:id="@+id/textView_sportAddressLocationOther"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/roboto"
+                    android:maxLines="2"
+                    android:text="@string/sportAddressLocationPlaceholder_textView"
+                    android:textColor="@color/darkestGray"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_sportTitleOther" />
 
-            <TextView
-                android:id="@+id/textView_spotAvailable"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:text="@string/spotAvailablePlaceholder_textView"
-                android:textColor="@color/red"
-                android:textSize="12sp"
-                app:layout_constraintBaseline_toBaselineOf="@+id/textView_statusPlay"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/textView_statusPlay" />
+                <TextView
+                    android:id="@+id/textView_statusPlayOther"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/status_play_shape"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="@string/statusPlayPlaceholder_textView"
+                    android:textColor="@color/blue"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_sportAddressLocationOther" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/container_spotAvailableOther"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView_statusPlayOther"
+                    app:layout_constraintStart_toEndOf="@+id/textView_statusPlayOther">
+
+                    <TextView
+                        android:id="@+id/textView_currentPlayerOther"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:text="@string/currentPlayer_textView"
+                        android:textColor="@color/red"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView_slashOther"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="@string/slash"
+                        android:textColor="@color/red"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/textView_currentPlayerOther"
+                        app:layout_constraintStart_toEndOf="@+id/textView_currentPlayerOther" />
+
+                    <TextView
+                        android:id="@+id/textView_maxPlayerOther"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="@string/maxPlayer_textView"
+                        android:textColor="@color/red"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/textView_currentPlayerOther"
+                        app:layout_constraintStart_toEndOf="@+id/textView_slashOther" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/button_join_match"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
@@ -110,8 +138,6 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

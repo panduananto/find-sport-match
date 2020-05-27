@@ -2,7 +2,11 @@ package com.example.findmatch.fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,19 +15,22 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.findmatch.R;
-import com.example.findmatch.adapter.MatchItemAdapter;
+import com.example.findmatch.adapter.UserMatchAdapter;
+import com.example.findmatch.model.UserMatchModel;
+import com.example.findmatch.viewmodel.SportItemViewModel;
+import com.example.findmatch.viewmodel.UserMatchViewModel;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class MatchRecyclerCardFragment extends Fragment {
 
-    RecyclerView recyclerViewMatch;
-    String sportTag[];
-    String sportLocation[];
-    String sportAddressLocation[];
-    String statusPlay[];
-    String spotAvailable[];
+    private UserMatchViewModel mUserMatchViewModel;
+    private UserMatchAdapter mUserMatchAdapter;
+    private RecyclerView recyclerViewMatch;
+
 
     public MatchRecyclerCardFragment() {
         // Required empty public constructor
@@ -35,17 +42,33 @@ public class MatchRecyclerCardFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_match_recycler_card, container, false);
 
-        recyclerViewMatch = (RecyclerView)view.findViewById(R.id.recyclerViewMatch);
-        sportTag = getResources().getStringArray(R.array.sportTag);
-        sportLocation = getResources().getStringArray(R.array.sportLocation);
-        sportAddressLocation = getResources().getStringArray(R.array.sportAddressLocation);
-        statusPlay = getResources().getStringArray(R.array.statusPlay);
-        spotAvailable = getResources().getStringArray(R.array.spotAvailable);
-
-        MatchItemAdapter mMatchItem = new MatchItemAdapter(getContext(), sportTag, sportLocation, sportAddressLocation, statusPlay, spotAvailable);
-        recyclerViewMatch.setAdapter(mMatchItem);
-        recyclerViewMatch.setLayoutManager(new LinearLayoutManager(getContext()));
-
         return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        recyclerViewMatch = (RecyclerView)view.findViewById(R.id.recyclerViewMatch);
+        mUserMatchAdapter = new UserMatchAdapter();
+
+        recyclerViewMatch.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerViewMatch.setAdapter(mUserMatchAdapter);
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        mUserMatchViewModel = new ViewModelProvider(getActivity()).get(UserMatchViewModel.class);
+        mUserMatchViewModel
+                .getUserMatchModelData()
+                .observe(getViewLifecycleOwner(), new Observer<List<UserMatchModel>>() {
+            @Override
+            public void onChanged(List<UserMatchModel> userMatchModelList) {
+                mUserMatchAdapter.setmUserMatchModel(userMatchModelList);
+                mUserMatchAdapter.notifyDataSetChanged();
+            }
+        });
     }
 }

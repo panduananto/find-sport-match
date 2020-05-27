@@ -9,48 +9,48 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.findmatch.R;
-import com.example.findmatch.model.MatchItemModel;
+import com.example.findmatch.model.UserMatchModel;
 
 import java.util.List;
 
-public class MatchItemAdapter extends RecyclerView.Adapter<MatchItemAdapter.SportItemViewHolder> {
+public class UserMatchAdapter extends RecyclerView.Adapter<UserMatchAdapter.UserMatchViewHolder> {
 
-    public List<MatchItemModel> mMatchItemModel;
+    public List<UserMatchModel> mUserMatchModel;
 
-    public void setmMatchItemModel(List<MatchItemModel> mMatchItemModel) {
-        this.mMatchItemModel = mMatchItemModel;
+    public void setmUserMatchModel(List<UserMatchModel> mUserMatchModel) {
+        this.mUserMatchModel = mUserMatchModel;
     }
 
     @NonNull
     @Override
-    public SportItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public UserMatchViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.match_item_card_view, parent, false);
-        SportItemViewHolder matchViewHolder = new SportItemViewHolder(view);
+        UserMatchViewHolder matchViewHolder = new UserMatchViewHolder(view);
 
         return matchViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SportItemViewHolder holder, int position) {
-        holder.textView_sportTag.setText(mMatchItemModel.get(position).getSportTag());
-        holder.textView_sportTitle.setText(mMatchItemModel.get(position).getSportTitle());
-        holder.textView_sportAddressLocation.setText(mMatchItemModel.get(position).getSportAddressLocation());
-        holder.textView_statusPlay.setText(mMatchItemModel.get(position).getStatusPlay());
-        holder.textView_currentPlayer.setText(mMatchItemModel.get(position).getCurrentPlayer());
-        holder.textView_maxPlayer.setText(mMatchItemModel.get(position).getMaxPlayer());
+    public void onBindViewHolder(@NonNull UserMatchViewHolder holder, int position) {
+        holder.textView_sportTag.setText(mUserMatchModel.get(position).getSportTag());
+        holder.textView_sportTitle.setText(mUserMatchModel.get(position).getSportTitle());
+        holder.textView_sportAddressLocation.setText(mUserMatchModel.get(position).getSportAddressLocation());
+        holder.textView_statusPlay.setText(mUserMatchModel.get(position).getStatusPlay());
+        holder.textView_currentPlayer.setText(mUserMatchModel.get(position).getCurrentPlayer());
+        holder.textView_maxPlayer.setText(mUserMatchModel.get(position).getMaxPlayer());
     }
 
     @Override
     public int getItemCount() {
-        if (mMatchItemModel == null) {
+        if (mUserMatchModel == null) {
             return 0;
         } else {
-            return mMatchItemModel.size();
+            return mUserMatchModel.size();
         }
     }
 
-    public class SportItemViewHolder extends RecyclerView.ViewHolder {
+    public class UserMatchViewHolder extends RecyclerView.ViewHolder {
 
         TextView textView_sportTag;
         TextView textView_sportTitle;
@@ -59,7 +59,7 @@ public class MatchItemAdapter extends RecyclerView.Adapter<MatchItemAdapter.Spor
         TextView textView_currentPlayer;
         TextView textView_maxPlayer;
 
-        public SportItemViewHolder(@NonNull View itemView) {
+        public UserMatchViewHolder(@NonNull View itemView) {
             super(itemView);
             textView_sportTag = itemView.findViewById(R.id.textView_sportTagOther);
             textView_sportTitle = itemView.findViewById(R.id.textView_sportTitleOther);

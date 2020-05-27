@@ -36,7 +36,6 @@ public class HomeActivity extends AppCompatActivity {
         mFragmentTransaction.commit();
     }
 
-    //bottom navigation biar bisa pindah pindah ke fragment lain
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
