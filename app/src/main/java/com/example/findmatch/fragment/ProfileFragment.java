@@ -174,7 +174,10 @@ public class ProfileFragment extends Fragment {
         bundle.putString("telpNumberOld", telpNumberOld);
         mEditUserDetailInfoFragment.setArguments(bundle);
 
-        mFragmentTransaction.add(R.id.screenHome, mEditUserDetailInfoFragment, EditUserDetailInfoFragment.class.getSimpleName());
+        mFragmentTransaction
+                .add(R.id.screenHome,
+                        mEditUserDetailInfoFragment,
+                        EditUserDetailInfoFragment.class.getSimpleName());
         mFragmentTransaction.addToBackStack(null);
         mFragmentTransaction.commit();
     }

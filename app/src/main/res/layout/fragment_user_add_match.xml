@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container_fragmentUserAddMatch"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
+    android:elevation="10dp"
     tools:context=".fragment.UserAddMatchFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -36,7 +39,8 @@
             android:textColor="@android:color/white"
             android:textSize="28sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView_backArrowUserAddMatch" />
+            app:layout_constraintTop_toBottomOf=
+                "@+id/imageView_backArrowUserAddMatch" />
 
         <TextView
             android:id="@+id/textView2"
@@ -61,7 +65,8 @@
         android:textColor="@color/darkestGray"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/container_topUserAddMatch" />
+        app:layout_constraintTop_toBottomOf=
+            "@+id/container_topUserAddMatch" />
 
     <Spinner
         android:id="@+id/spinner_sportItem"
@@ -70,10 +75,11 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="25dp"
-        android:elevation="3dp"
+        android:dropDownWidth="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_sportTagAddMatch" />
+        app:layout_constraintTop_toBottomOf=
+            "@+id/textView_sportTagAddMatch" />
 
     <TextView
         android:id="@+id/textView_sportTitleAddMatch"
@@ -86,10 +92,11 @@
         android:textColor="@color/darkestGray"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_sportItem" />
+        app:layout_constraintTop_toBottomOf=
+            "@+id/spinner_sportItem" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/editText_sportTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
@@ -102,7 +109,8 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_sportTitleAddMatch" />
+        app:layout_constraintTop_toBottomOf=
+            "@+id/textView_sportTitleAddMatch" />
 
     <TextView
         android:id="@+id/textView_sportAddressLocationAddMatch"
@@ -115,10 +123,11 @@
         android:textColor="@color/darkestGray"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf=
+            "@+id/editText_sportTitle" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/editText_sportAddressLocation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
@@ -131,7 +140,8 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_sportAddressLocationAddMatch" />
+        app:layout_constraintTop_toBottomOf=
+            "@+id/textView_sportAddressLocationAddMatch" />
 
     <TextView
         android:id="@+id/textView_currentPlayerAddMatch"
@@ -144,10 +154,11 @@
         android:textColor="@color/darkestGray"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf=
+            "@+id/editText_sportAddressLocation" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/editText_currentPlayer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
@@ -160,7 +171,8 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_currentPlayerAddMatch" />
+        app:layout_constraintTop_toBottomOf=
+            "@+id/textView_currentPlayerAddMatch" />
 
     <TextView
         android:id="@+id/textView_maxPlayerAddMatch"
@@ -173,10 +185,11 @@
         android:textColor="@color/darkestGray"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintTop_toBottomOf=
+            "@+id/editText_currentPlayer" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/editText_maxPlayer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
@@ -189,7 +202,8 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_maxPlayerAddMatch" />
+        app:layout_constraintTop_toBottomOf=
+            "@+id/textView_maxPlayerAddMatch" />
 
     <Button
         android:id="@+id/button_addMatch"
@@ -202,7 +216,8 @@
         android:text="@string/btn_addMatch"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
+        app:layout_constraintTop_toBottomOf=
+            "@+id/editText_maxPlayer" />
 
     <Button
         android:id="@+id/button_resetMatch"
@@ -215,5 +230,6 @@
         android:text="@string/reset_button"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
+        app:layout_constraintTop_toBottomOf=
+            "@+id/editText_maxPlayer" />
 </androidx.constraintlayout.widget.ConstraintLayout>

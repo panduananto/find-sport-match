@@ -113,9 +113,7 @@ public class EditUserDetailInfoFragment extends Fragment {
                         editTextUserFullAddress.getText().toString().isEmpty() ||
                         editTextUserBio.getText().toString().isEmpty() ||
                         editTextUserTelpNumber.getText().toString().isEmpty()) {
-                    Toast.makeText(getContext(),
-                            "You cannot have empty fields!",
-                            Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "You cannot have empty fields!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 

@@ -87,6 +87,21 @@ public class MatchPeopleFragment extends Fragment {
         mFragmentTransaction.commit();
 
         textViewAddGame = (TextView) view.findViewById(R.id.textView_addGame);
+        textViewAddGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UserAddMatchFragment mUserAddMatchFragment = new UserAddMatchFragment();
+                FragmentManager mUserAddMatchManager = getFragmentManager();
+                FragmentTransaction mUserAddMatchTransaction = mUserAddMatchManager.beginTransaction();
+
+                mUserAddMatchTransaction
+                        .add(R.id.screenHome,
+                                mUserAddMatchFragment,
+                                UserAddMatchFragment.class.getSimpleName());
+                mUserAddMatchTransaction.addToBackStack(null);
+                mUserAddMatchTransaction.commit();
+            }
+        });
 
         return view;
     }
