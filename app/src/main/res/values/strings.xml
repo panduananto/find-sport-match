@@ -10,9 +10,9 @@
     <string name="username_textView">Username</string>
     <string name="email_textView">Email</string>
     <string name="password_textView">Password</string>
-    <string name="username_editText">Silahkan masukkan username Anda di sini...</string>
-    <string name="email_editText">Silahkan masukkan email Anda di sini...</string>
-    <string name="password_editText">Silahkan masukkan password Anda di sini...</string>
+    <string name="username_editText">Silahkan masukkan username Anda di sini</string>
+    <string name="email_editText">Silahkan masukkan email Anda di sini</string>
+    <string name="password_editText">Silahkan masukkan password Anda di sini</string>
     <string name="forgotPassword_textView">Lupa password?</string>
     <string name="login_button">MASUK</string>
     <string name="next_button">NEXT</string>
@@ -27,10 +27,10 @@
     <string name="userFullAddress_textView">Alamat Lengkap</string>
     <string name="userBio_textView">Bio</string>
     <string name="userTelpNumber_textView">Nomor Telepon</string>
-    <string name="userFullName_editText">Silahkan masukkan nama lengkap Anda di sini...</string>
-    <string name="userFullAddress_editText">Silahkan masukkan alamat lengkap Anda di sini...</string>
-    <string name="userBio_editText">Silahkan masukkan tentang diri Anda di sini...</string>
-    <string name="userTelpNumber_editText">Silahkan masukkan nomor telepon Anda di sini...</string>
+    <string name="userFullName_editText">Silahkan masukkan nama lengkap Anda di sini</string>
+    <string name="userFullAddress_editText">Silahkan masukkan alamat lengkap Anda di sini</string>
+    <string name="userBio_editText">Silahkan masukkan tentang diri Anda di sini</string>
+    <string name="userTelpNumber_editText">Silahkan masukkan nomor telepon Anda di sini</string>
 
     <!-- Ini string home !-->
     <string name="greetings_textView">Selamat pagi,</string>
@@ -118,6 +118,21 @@
     <string name="headerEditProfile_textView">Lagi ngedit info</string>
     <string name="editYourProfileHere_textView">Anda lagi ngedit informasi pribadi nih!</string>
     <string name="btn_saveEdit">SAVE</string>
+
+    <!-- Ini string user add match !-->
+    <string name="headerUserAddMatch_textView">Lagi nambah event olahraga</string>
+    <string name="userAddMatchHere_textView">Anda lagi nambah event olahraga nih!</string>
+    <string name="sportTag_textView">Sport Tag</string>
+    <string name="sportTitle_textView">Sport Title</string>
+    <string name="sportAddressLocation_textView">Sport Address Location</string>
+    <string name="sportCurrentPlayer_textView">Current Player</string>
+    <string name="sportMaxPlayer_textView">Max Player</string>
+    <string name="sportTag_editText">Silahkan pilih kategori olahraga</string>
+    <string name="sportTitle_editText">Silahkan masukkan judul event olahraga Anda di sini</string>
+    <string name="sportAddressLocation_editText">Silahkan masukkan alamat lengkap tempat event olahraga di sini</string>
+    <string name="sportCurrentPlayer_editText">Silahkan masukkan jumlah orang saat ini di sini</string>
+    <string name="sportMaxPlayer_editText">Silahkan masukkan maksimal orang yang bisa ikut di sini</string>
+    <string name="btn_addMatch">ADD MATCH</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

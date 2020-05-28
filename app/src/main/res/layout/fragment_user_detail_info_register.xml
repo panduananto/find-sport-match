@@ -76,6 +76,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
+        android:ellipsize="end"
         android:ems="10"
         android:fontFamily="@font/roboto"
         android:hint="@string/username_editText"
@@ -84,8 +85,7 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_userNameOnEdit">
-    </EditText>
+        app:layout_constraintTop_toBottomOf="@+id/textView_userNameOnEdit"></EditText>
 
     <TextView
         android:id="@+id/textView_fullNameOnEdit"
@@ -107,6 +107,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
+        android:ellipsize="end"
         android:ems="10"
         android:fontFamily="@font/roboto"
         android:hint="@string/userFullName_editText"
@@ -115,8 +116,7 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_fullNameOnEdit">
-    </EditText>
+        app:layout_constraintTop_toBottomOf="@+id/textView_fullNameOnEdit"></EditText>
 
     <TextView
         android:id="@+id/textView_fullAddressOnEdit"
@@ -138,6 +138,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
+        android:ellipsize="end"
         android:ems="10"
         android:fontFamily="@font/roboto"
         android:hint="@string/userFullAddress_editText"
@@ -146,8 +147,7 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_fullAddressOnEdit">
-    </EditText>
+        app:layout_constraintTop_toBottomOf="@+id/textView_fullAddressOnEdit"></EditText>
 
     <TextView
         android:id="@+id/textView_bioOnEdit"
@@ -169,6 +169,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
+        android:ellipsize="end"
         android:ems="10"
         android:fontFamily="@font/roboto"
         android:hint="@string/userBio_editText"
@@ -177,8 +178,7 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_bioOnEdit">
-    </EditText>
+        app:layout_constraintTop_toBottomOf="@+id/textView_bioOnEdit"></EditText>
 
     <TextView
         android:id="@+id/textView_telpNumberOnEdit"
@@ -200,6 +200,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
+        android:ellipsize="end"
         android:ems="10"
         android:fontFamily="@font/roboto"
         android:hint="@string/userTelpNumber_editText"
@@ -209,8 +210,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.452"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_telpNumberOnEdit">
-    </EditText>
+        app:layout_constraintTop_toBottomOf="@+id/textView_telpNumberOnEdit"></EditText>
 
     <Button
         android:id="@+id/button_saveEditProfile"
