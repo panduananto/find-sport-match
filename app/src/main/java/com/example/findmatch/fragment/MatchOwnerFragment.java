@@ -1,28 +1,24 @@
 package com.example.findmatch.fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.findmatch.R;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -42,10 +38,11 @@ public class MatchOwnerFragment extends Fragment {
 
     private String TAG_MATCHUSER = "MATCHUSER_TAG";
     private String documentId;
+    private String statusPlay;
 
     private TextView textViewSportTagOwner, textViewSportTitleOwner;
     private TextView textViewSportAddressLocationOwner, textViewStatusPlayOwner;
-    private TextView textViewCurrentPlayer, textViewMaxPlayer;
+    private TextView textViewCurrentPlayerOwner, textViewMaxPlayerOwner;
     private Button buttonFinishMatch;
 
     private FirebaseAuth mAuth;
@@ -66,8 +63,8 @@ public class MatchOwnerFragment extends Fragment {
         textViewSportTitleOwner = (TextView) view.findViewById(R.id.textView_sportTitleOther);
         textViewSportAddressLocationOwner = (TextView) view.findViewById(R.id.textView_sportAddressLocationOther);
         textViewStatusPlayOwner = (TextView) view.findViewById(R.id.textView_statusPlayOther);
-        textViewCurrentPlayer = (TextView) view.findViewById(R.id.textView_currentPlayerOther);
-        textViewMaxPlayer = (TextView) view.findViewById(R.id.textView_maxPlayerOther);
+        textViewCurrentPlayerOwner = (TextView) view.findViewById(R.id.textView_currentPlayerOther);
+        textViewMaxPlayerOwner = (TextView) view.findViewById(R.id.textView_maxPlayerOther);
 
         mAuth = FirebaseAuth.getInstance();
         userId = mAuth.getCurrentUser().getUid();
@@ -90,10 +87,16 @@ public class MatchOwnerFragment extends Fragment {
                         textViewSportTitleOwner.setText(document.getString("sportTitle"));
                         textViewSportAddressLocationOwner.setText(document.getString("sportAddressLocation"));
                         textViewStatusPlayOwner.setText(document.getString("statusPlay"));
-                        textViewCurrentPlayer.setText(document.getString("currentPlayer"));
-                        textViewMaxPlayer.setText(document.getString("maxPlayer"));
+                        textViewCurrentPlayerOwner.setText(document.getString("currentPlayer"));
+                        textViewMaxPlayerOwner.setText(document.getString("maxPlayer"));
                     }
                     documentId = document.getId();
+                    statusPlay = document.getString("statusPlay");
+                    if (statusPlay.equalsIgnoreCase("SEDANG MAIN")) {
+                        textViewStatusPlayOwner.setTextColor(Color.parseColor("#48bb78"));
+                    } else {
+                        textViewStatusPlayOwner.setTextColor(Color.parseColor("#4299E1"));
+                    }
                 }
             }
         });
@@ -109,6 +112,26 @@ public class MatchOwnerFragment extends Fragment {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Toast.makeText(getContext(), "Match finished!", Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getContext(), "Failed updating data!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+
+        textViewStatusPlayOwner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DocumentReference mDocumentReference = mFireStore.collection("MatchUser").document(documentId);
+                Map<String, Object> updateStatusPlay = new HashMap<>();
+                updateStatusPlay.put("statusPlay", "SEDANG MAIN");
+                mDocumentReference.update(updateStatusPlay).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(getContext(), "Status play updated to SEDANG MAIN", Toast.LENGTH_SHORT).show();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override

@@ -1,11 +1,14 @@
 package com.example.findmatch.adapter;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.findmatch.R;
@@ -16,6 +19,7 @@ import java.util.List;
 public class UserMatchAdapter extends RecyclerView.Adapter<UserMatchAdapter.UserMatchViewHolder> {
 
     public List<UserMatchModel> mUserMatchModel;
+    private String statusPlay;
 
     public void setmUserMatchModel(List<UserMatchModel> mUserMatchModel) {
         this.mUserMatchModel = mUserMatchModel;
@@ -37,6 +41,12 @@ public class UserMatchAdapter extends RecyclerView.Adapter<UserMatchAdapter.User
         holder.textView_sportTitle.setText(mUserMatchModel.get(position).getSportTitle());
         holder.textView_sportAddressLocation.setText(mUserMatchModel.get(position).getSportAddressLocation());
         holder.textView_statusPlay.setText(mUserMatchModel.get(position).getStatusPlay());
+        statusPlay = holder.textView_statusPlay.getText().toString();
+        if (statusPlay.equalsIgnoreCase("SEDANG MAIN")) {
+            holder.textView_statusPlay.setTextColor(Color.parseColor("#48bb78"));
+        } else {
+            holder.textView_statusPlay.setTextColor(Color.parseColor("#4299E1"));
+        }
         holder.textView_currentPlayer.setText(mUserMatchModel.get(position).getCurrentPlayer());
         holder.textView_maxPlayer.setText(mUserMatchModel.get(position).getMaxPlayer());
     }

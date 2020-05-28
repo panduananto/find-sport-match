@@ -75,7 +75,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/status_play_shape"
+                    android:background="@drawable/status_wait_shape"
                     android:fontFamily="@font/montserrat_bold"
                     android:text="@string/statusPlayPlaceholder_textView"
                     android:textColor="@color/blue"
@@ -87,9 +87,10 @@
                     android:id="@+id/container_spotAvailableOther"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="20dp"
                     app:layout_constraintBottom_toBottomOf="@+id/textView_statusPlayOther"
-                    app:layout_constraintStart_toEndOf="@+id/textView_statusPlayOther">
+                    app:layout_constraintStart_toEndOf="@+id/textView_statusPlayOther"
+                    app:layout_constraintTop_toTopOf="@+id/textView_statusPlayOther">
 
                     <TextView
                         android:id="@+id/textView_currentPlayerOther"

@@ -12,5 +12,6 @@
     <color name="lightestGray">#EDF2F7</color>
     <color name="blue">#4299E1</color>
     <color name="lightBlue">#19B5FE</color>
+    <color name="green">#48bb78</color>
     <color name="red">#E53E3E</color>
 </resources>
