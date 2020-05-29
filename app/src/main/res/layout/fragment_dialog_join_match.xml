@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container_dialogJoinMatch"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:background="@drawable/profile_desc_shape"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/textView_dialogTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/dialogTitle_textView"
+        android:textColor="@color/darkestGray"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_dialogDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto"
+        android:text="@string/dialogDescription_textView"
+        android:textColor="@color/darkGray"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_dialogTitle" />
+
+    <EditText
+        android:id="@+id/editText_inputTotalPlayer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:ellipsize="end"
+        android:ems="10"
+        android:fontFamily="@font/roboto"
+        android:hint="@string/inputTotalPlayer_editText"
+        android:inputType="textPersonName"
+        android:textColor="@color/darkestGray"
+        android:textColorHint="@color/gray"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_dialogDescription" />
+
+    <TextView
+        android:id="@+id/textView_buttonCancelJoin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/buttonCancelJoin_textView"
+        android:textColor="@color/blue"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/textView_buttonAcceptJoin"
+        app:layout_constraintTop_toBottomOf="@+id/editText_inputTotalPlayer" />
+
+    <TextView
+        android:id="@+id/textView_buttonAcceptJoin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/buttonAcceptJoin_textView"
+        android:textColor="@color/blue"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_inputTotalPlayer" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

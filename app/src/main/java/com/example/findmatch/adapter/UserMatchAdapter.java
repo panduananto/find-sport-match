@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,6 +21,11 @@ public class UserMatchAdapter extends RecyclerView.Adapter<UserMatchAdapter.User
 
     public List<UserMatchModel> mUserMatchModel;
     private String statusPlay;
+    private OnButtonJoinClick onButtonJoinClick;
+
+    public UserMatchAdapter(OnButtonJoinClick onButtonJoinClick) {
+        this.onButtonJoinClick = onButtonJoinClick;
+    }
 
     public void setmUserMatchModel(List<UserMatchModel> mUserMatchModel) {
         this.mUserMatchModel = mUserMatchModel;
@@ -68,6 +74,7 @@ public class UserMatchAdapter extends RecyclerView.Adapter<UserMatchAdapter.User
         TextView textView_statusPlay;
         TextView textView_currentPlayer;
         TextView textView_maxPlayer;
+        Button button_joinMatch;
 
         public UserMatchViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -77,6 +84,18 @@ public class UserMatchAdapter extends RecyclerView.Adapter<UserMatchAdapter.User
             textView_statusPlay = itemView.findViewById(R.id.textView_statusPlayOther);
             textView_currentPlayer = itemView.findViewById(R.id.textView_currentPlayerOther);
             textView_maxPlayer = itemView.findViewById(R.id.textView_maxPlayerOther);
+
+            button_joinMatch = itemView.findViewById(R.id.button_join_match);
+            button_joinMatch.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onButtonJoinClick.onItemClicked(getAdapterPosition());
+                }
+            });
         }
+    }
+
+    public interface OnButtonJoinClick {
+        void onItemClicked(int position);
     }
 }

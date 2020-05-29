@@ -137,18 +137,15 @@ public class UserAddMatchFragment extends Fragment {
                         editTextSportAddressLocation.getText().toString().isEmpty() ||
                         editTextCurrentPlayer.getText().toString().isEmpty() ||
                         editTextMaxPlayer.getText().toString().isEmpty()) {
-                    Toast.makeText(getContext(),
-                            "You cannot have empty fields!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "You cannot have empty fields!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                DocumentReference userMatchRef = mFireStore
-                        .collection("MatchUser").document();
+                DocumentReference userMatchRef = mFireStore.collection("MatchUser").document();
                 Map<String, Object> newMatchData = new HashMap<>();
                 newMatchData.put("sportTag", sportItemName);
                 newMatchData.put("sportTitle", editTextSportTitle.getText().toString());
-                newMatchData.put("sportAddressLocation",
-                        editTextSportAddressLocation.getText().toString());
+                newMatchData.put("sportAddressLocation", editTextSportAddressLocation.getText().toString());
                 newMatchData.put("statusPlay", "MENUNGGU LAWAN");
                 newMatchData.put("statusMatch", "play");
                 newMatchData.put("currentPlayer", editTextCurrentPlayer.getText().toString());
@@ -158,14 +155,12 @@ public class UserAddMatchFragment extends Fragment {
                         new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(getContext(),
-                                "Match is successfully added!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Match is successfully added!", Toast.LENGTH_SHORT).show();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getContext(),
-                                "Failed adding new match!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Failed adding new match!", Toast.LENGTH_SHORT).show();
                     }
                 });
             }

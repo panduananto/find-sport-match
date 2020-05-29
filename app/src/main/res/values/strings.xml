@@ -134,6 +134,13 @@
     <string name="sportMaxPlayer_editText">Silahkan masukkan maksimal orang yang bisa ikut di sini</string>
     <string name="btn_addMatch">ADD MATCH</string>
 
+    <!-- Ini string dialog join match !-->
+    <string name="dialogTitle_textView">Tambah Jumlah Pemain</string>
+    <string name="dialogDescription_textView">Anda bawa teman nggak?</string>
+    <string name="inputTotalPlayer_editText">Masukkan jumlah pemain di sini</string>
+    <string name="buttonCancelJoin_textView">CANCEL</string>
+    <string name="buttonAcceptJoin_textView">JOIN</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

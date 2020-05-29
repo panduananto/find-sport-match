@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +26,9 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MatchRecyclerCardFragment extends Fragment {
+public class MatchRecyclerCardFragment extends Fragment implements UserMatchAdapter.OnButtonJoinClick {
+
+    private static final String TAG_MATCHRECYCLER = "TAG_MATCHRECYCLER";
 
     private UserMatchViewModel mUserMatchViewModel;
     private UserMatchAdapter mUserMatchAdapter;
@@ -50,7 +53,7 @@ public class MatchRecyclerCardFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         recyclerViewMatch = (RecyclerView)view.findViewById(R.id.recyclerViewMatch);
-        mUserMatchAdapter = new UserMatchAdapter();
+        mUserMatchAdapter = new UserMatchAdapter(this);
 
         recyclerViewMatch.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerViewMatch.setAdapter(mUserMatchAdapter);
@@ -61,14 +64,20 @@ public class MatchRecyclerCardFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         mUserMatchViewModel = new ViewModelProvider(getActivity()).get(UserMatchViewModel.class);
-        mUserMatchViewModel
-                .getUserMatchModelData()
-                .observe(getViewLifecycleOwner(), new Observer<List<UserMatchModel>>() {
+        mUserMatchViewModel.getUserMatchModelData().observe(getViewLifecycleOwner(), new Observer<List<UserMatchModel>>() {
             @Override
             public void onChanged(List<UserMatchModel> userMatchModelList) {
                 mUserMatchAdapter.setmUserMatchModel(userMatchModelList);
                 mUserMatchAdapter.notifyDataSetChanged();
             }
         });
+    }
+
+    @Override
+    public void onItemClicked(int position) {
+        Log.d(TAG_MATCHRECYCLER, "position: " + position);
+        DialogJoinMatchFragment mDialogJoinMatch = new DialogJoinMatchFragment();
+        mDialogJoinMatch.setTargetFragment(MatchRecyclerCardFragment.this, 1);
+        mDialogJoinMatch.show(getFragmentManager(), "DialogJoinMatchFragment");
     }
 }

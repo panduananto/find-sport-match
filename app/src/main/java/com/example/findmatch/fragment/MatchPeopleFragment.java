@@ -60,7 +60,9 @@ public class MatchPeopleFragment extends Fragment {
         userId = mAuth.getCurrentUser().getUid();
         mFireStore = FirebaseFirestore.getInstance();
         CollectionReference matchUserReference = mFireStore.collection("MatchUser");
-        Query matchUserQuery = matchUserReference.whereEqualTo("userId", userId).whereEqualTo("statusMatch", "play");
+        Query matchUserQuery = matchUserReference
+                .whereEqualTo("userId", userId)
+                .whereEqualTo("statusMatch", "play");
         matchUserQuery.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots,
@@ -77,8 +79,9 @@ public class MatchPeopleFragment extends Fragment {
                     MatchOwnerFragment mMatchOwner = new MatchOwnerFragment();
                     FragmentManager mMatchOwnerManager = getChildFragmentManager();
                     FragmentTransaction mMatchOwnerTransaction = mMatchOwnerManager.beginTransaction();
-                    mMatchOwnerTransaction
-                            .add(R.id.container_youNoGame, mMatchOwner, MatchOwnerFragment.class.getSimpleName());
+                    mMatchOwnerTransaction.add(R.id.container_youNoGame,
+                            mMatchOwner,
+                            MatchOwnerFragment.class.getSimpleName());
                     mMatchOwnerTransaction.commit();
                 }
             }
@@ -94,10 +97,9 @@ public class MatchPeopleFragment extends Fragment {
                 FragmentManager mUserAddMatchManager = getFragmentManager();
                 FragmentTransaction mUserAddMatchTransaction = mUserAddMatchManager.beginTransaction();
 
-                mUserAddMatchTransaction
-                        .add(R.id.screenHome,
-                                mUserAddMatchFragment,
-                                UserAddMatchFragment.class.getSimpleName());
+                mUserAddMatchTransaction.add(R.id.screenHome,
+                        mUserAddMatchFragment,
+                        UserAddMatchFragment.class.getSimpleName());
                 mUserAddMatchTransaction.addToBackStack(null);
                 mUserAddMatchTransaction.commit();
             }
