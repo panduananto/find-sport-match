@@ -78,6 +78,7 @@
     <string name="othersGame_textView">Others Game</string>
 
     <!-- Ini string card match people !-->
+    <string name="sportMatchIdPlaceholder_textView">matchId_placeholder</string>
     <string name="sportTagPlaceholder_textView">sportTag_placeholder</string>
     <string name="sportTitlePlaceholder_textView">sportTitle_placeholder</string>
     <string name="sportAddressLocationPlaceholder_textView">sportAddressLocation_placeholder</string>

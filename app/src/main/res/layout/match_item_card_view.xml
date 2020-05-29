@@ -33,6 +33,16 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
+                    android:id="@+id/textView_sportMatchId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/sportMatchIdPlaceholder_textView"
+                    app:layout_constraintStart_toEndOf="@+id/textView_sportTagOther"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
                     android:id="@+id/textView_sportTagOther"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -97,6 +107,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto"
+                        android:inputType="number"
                         android:text="@string/currentPlayer_textView"
                         android:textColor="@color/red"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -120,11 +131,13 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
                         android:fontFamily="@font/roboto"
+                        android:inputType="number"
                         android:text="@string/maxPlayer_textView"
                         android:textColor="@color/red"
                         app:layout_constraintBaseline_toBaselineOf="@+id/textView_currentPlayerOther"
                         app:layout_constraintStart_toEndOf="@+id/textView_slashOther" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <Button

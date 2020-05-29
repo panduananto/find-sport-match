@@ -6,7 +6,7 @@ import com.google.firebase.firestore.IgnoreExtraProperties;
 public class UserMatchModel {
     private String matchItemId, userId;
     private String sportTag, sportTitle, sportAddressLocation;
-    private String currentPlayer, maxPlayer;
+    private Long currentPlayer, maxPlayer;
     private String statusMatch, statusPlay;
 
     public UserMatchModel() {
@@ -15,7 +15,7 @@ public class UserMatchModel {
 
     public UserMatchModel(String matchItemId, String userId, String sportTag,
                           String sportTitle, String sportAddressLocation,
-                          String currentPlayer, String maxPlayer,
+                          Long currentPlayer, Long maxPlayer,
                           String statusMatch, String statusPlay) {
 
         this.matchItemId = matchItemId;
@@ -69,19 +69,19 @@ public class UserMatchModel {
         this.sportAddressLocation = sportAddressLocation;
     }
 
-    public String getCurrentPlayer() {
+    public Long getCurrentPlayer() {
         return currentPlayer;
     }
 
-    public void setCurrentPlayer(String currentPlayer) {
+    public void setCurrentPlayer(Long currentPlayer) {
         this.currentPlayer = currentPlayer;
     }
 
-    public String getMaxPlayer() {
+    public Long getMaxPlayer() {
         return maxPlayer;
     }
 
-    public void setMaxPlayer(String maxPlayer) {
+    public void setMaxPlayer(Long maxPlayer) {
         this.maxPlayer = maxPlayer;
     }
 

@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -14,6 +15,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.TextView;
 
 import com.example.findmatch.R;
 import com.example.findmatch.adapter.UserMatchAdapter;
@@ -75,8 +78,14 @@ public class MatchRecyclerCardFragment extends Fragment implements UserMatchAdap
 
     @Override
     public void onItemClicked(int position) {
-        Log.d(TAG_MATCHRECYCLER, "position: " + position);
         DialogJoinMatchFragment mDialogJoinMatch = new DialogJoinMatchFragment();
+
+        TextView sportMatchId = recyclerViewMatch.findViewHolderForAdapterPosition(position).itemView.findViewById(R.id.textView_sportMatchId);
+        String sportMatchIdString = sportMatchId.getText().toString();
+        Bundle bundle = new Bundle();
+        bundle.putString("sportMatchIdString", sportMatchIdString);
+
+        mDialogJoinMatch.setArguments(bundle);
         mDialogJoinMatch.setTargetFragment(MatchRecyclerCardFragment.this, 1);
         mDialogJoinMatch.show(getFragmentManager(), "DialogJoinMatchFragment");
     }

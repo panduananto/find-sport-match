@@ -8,8 +8,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
-import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.findmatch.R;
@@ -43,6 +41,7 @@ public class UserMatchAdapter extends RecyclerView.Adapter<UserMatchAdapter.User
 
     @Override
     public void onBindViewHolder(@NonNull UserMatchViewHolder holder, int position) {
+        holder.textView_sportMatchId.setText(mUserMatchModel.get(position).getMatchItemId());
         holder.textView_sportTag.setText(mUserMatchModel.get(position).getSportTag());
         holder.textView_sportTitle.setText(mUserMatchModel.get(position).getSportTitle());
         holder.textView_sportAddressLocation.setText(mUserMatchModel.get(position).getSportAddressLocation());
@@ -53,8 +52,10 @@ public class UserMatchAdapter extends RecyclerView.Adapter<UserMatchAdapter.User
         } else {
             holder.textView_statusPlay.setTextColor(Color.parseColor("#4299E1"));
         }
-        holder.textView_currentPlayer.setText(mUserMatchModel.get(position).getCurrentPlayer());
-        holder.textView_maxPlayer.setText(mUserMatchModel.get(position).getMaxPlayer());
+        Long currentPlayer = mUserMatchModel.get(position).getCurrentPlayer();
+        Long maxPlayer = mUserMatchModel.get(position).getMaxPlayer();
+        holder.textView_currentPlayer.setText(currentPlayer.toString());
+        holder.textView_maxPlayer.setText(maxPlayer.toString());
     }
 
     @Override
@@ -68,6 +69,7 @@ public class UserMatchAdapter extends RecyclerView.Adapter<UserMatchAdapter.User
 
     public class UserMatchViewHolder extends RecyclerView.ViewHolder {
 
+        TextView textView_sportMatchId;
         TextView textView_sportTag;
         TextView textView_sportTitle;
         TextView textView_sportAddressLocation;
@@ -78,6 +80,7 @@ public class UserMatchAdapter extends RecyclerView.Adapter<UserMatchAdapter.User
 
         public UserMatchViewHolder(@NonNull View itemView) {
             super(itemView);
+            textView_sportMatchId = itemView.findViewById(R.id.textView_sportMatchId);
             textView_sportTag = itemView.findViewById(R.id.textView_sportTagOther);
             textView_sportTitle = itemView.findViewById(R.id.textView_sportTitleOther);
             textView_sportAddressLocation = itemView.findViewById(R.id.textView_sportAddressLocationOther);

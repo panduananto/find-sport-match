@@ -143,13 +143,14 @@ public class UserAddMatchFragment extends Fragment {
 
                 DocumentReference userMatchRef = mFireStore.collection("MatchUser").document();
                 Map<String, Object> newMatchData = new HashMap<>();
+                newMatchData.put("matchItemId", userMatchRef.getId());
                 newMatchData.put("sportTag", sportItemName);
                 newMatchData.put("sportTitle", editTextSportTitle.getText().toString());
                 newMatchData.put("sportAddressLocation", editTextSportAddressLocation.getText().toString());
                 newMatchData.put("statusPlay", "MENUNGGU LAWAN");
                 newMatchData.put("statusMatch", "play");
-                newMatchData.put("currentPlayer", editTextCurrentPlayer.getText().toString());
-                newMatchData.put("maxPlayer", editTextMaxPlayer.getText().toString());
+                newMatchData.put("currentPlayer", Integer.valueOf(editTextCurrentPlayer.getText().toString()));
+                newMatchData.put("maxPlayer", Integer.valueOf(editTextMaxPlayer.getText().toString()));
                 newMatchData.put("userId", userId);
                 userMatchRef.set(newMatchData).addOnSuccessListener(
                         new OnSuccessListener<Void>() {

@@ -87,8 +87,8 @@ public class MatchOwnerFragment extends Fragment {
                         textViewSportTitleOwner.setText(document.getString("sportTitle"));
                         textViewSportAddressLocationOwner.setText(document.getString("sportAddressLocation"));
                         textViewStatusPlayOwner.setText(document.getString("statusPlay"));
-                        textViewCurrentPlayerOwner.setText(document.getString("currentPlayer"));
-                        textViewMaxPlayerOwner.setText(document.getString("maxPlayer"));
+                        textViewCurrentPlayerOwner.setText(document.getLong("currentPlayer").toString());
+                        textViewMaxPlayerOwner.setText(document.getLong("maxPlayer").toString());
                     }
                     documentId = document.getId();
                     statusPlay = document.getString("statusPlay");

@@ -9,11 +9,9 @@ import com.example.findmatch.repository.UserMatchRepository;
 
 import java.util.List;
 
-public class UserMatchViewModel extends ViewModel
-        implements UserMatchRepository.OnFireStoreTaskComplete {
+public class UserMatchViewModel extends ViewModel implements UserMatchRepository.OnFireStoreTaskComplete {
 
-    private MutableLiveData<List<UserMatchModel>>
-            userMatchModelData = new MutableLiveData<>();
+    private MutableLiveData<List<UserMatchModel>> userMatchModelData = new MutableLiveData<>();
 
     public LiveData<List<UserMatchModel>> getUserMatchModelData() {
         return userMatchModelData;
