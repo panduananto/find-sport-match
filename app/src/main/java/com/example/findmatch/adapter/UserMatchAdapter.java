@@ -42,6 +42,7 @@ public class UserMatchAdapter extends RecyclerView.Adapter<UserMatchAdapter.User
     @Override
     public void onBindViewHolder(@NonNull UserMatchViewHolder holder, int position) {
         holder.textView_sportMatchId.setText(mUserMatchModel.get(position).getMatchItemId());
+        holder.textView_sportUserId.setText(mUserMatchModel.get(position).getUserId());
         holder.textView_sportTag.setText(mUserMatchModel.get(position).getSportTag());
         holder.textView_sportTitle.setText(mUserMatchModel.get(position).getSportTitle());
         holder.textView_sportAddressLocation.setText(mUserMatchModel.get(position).getSportAddressLocation());
@@ -70,6 +71,7 @@ public class UserMatchAdapter extends RecyclerView.Adapter<UserMatchAdapter.User
     public class UserMatchViewHolder extends RecyclerView.ViewHolder {
 
         TextView textView_sportMatchId;
+        TextView textView_sportUserId;
         TextView textView_sportTag;
         TextView textView_sportTitle;
         TextView textView_sportAddressLocation;
@@ -81,6 +83,7 @@ public class UserMatchAdapter extends RecyclerView.Adapter<UserMatchAdapter.User
         public UserMatchViewHolder(@NonNull View itemView) {
             super(itemView);
             textView_sportMatchId = itemView.findViewById(R.id.textView_sportMatchId);
+            textView_sportUserId = itemView.findViewById(R.id.textView_userId);
             textView_sportTag = itemView.findViewById(R.id.textView_sportTagOther);
             textView_sportTitle = itemView.findViewById(R.id.textView_sportTitleOther);
             textView_sportAddressLocation = itemView.findViewById(R.id.textView_sportAddressLocationOther);

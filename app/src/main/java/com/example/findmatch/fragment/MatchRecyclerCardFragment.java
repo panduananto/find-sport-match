@@ -17,19 +17,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.findmatch.R;
 import com.example.findmatch.adapter.UserMatchAdapter;
 import com.example.findmatch.model.UserMatchModel;
 import com.example.findmatch.viewmodel.SportItemViewModel;
 import com.example.findmatch.viewmodel.UserMatchViewModel;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MatchRecyclerCardFragment extends Fragment implements UserMatchAdapter.OnButtonJoinClick {
+public class MatchRecyclerCardFragment extends Fragment
+        implements UserMatchAdapter.OnButtonJoinClick {
 
     private static final String TAG_MATCHRECYCLER = "TAG_MATCHRECYCLER";
 
@@ -37,6 +42,9 @@ public class MatchRecyclerCardFragment extends Fragment implements UserMatchAdap
     private UserMatchAdapter mUserMatchAdapter;
     private RecyclerView recyclerViewMatch;
 
+    private FirebaseAuth mAuth;
+    private FirebaseUser currentUser;
+    private String userID;
 
     public MatchRecyclerCardFragment() {
         // Required empty public constructor
@@ -47,6 +55,10 @@ public class MatchRecyclerCardFragment extends Fragment implements UserMatchAdap
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_match_recycler_card, container, false);
+
+        mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
+        userID = currentUser.getUid();
 
         return view;
     }
@@ -80,13 +92,39 @@ public class MatchRecyclerCardFragment extends Fragment implements UserMatchAdap
     public void onItemClicked(int position) {
         DialogJoinMatchFragment mDialogJoinMatch = new DialogJoinMatchFragment();
 
-        TextView sportMatchId = recyclerViewMatch.findViewHolderForAdapterPosition(position).itemView.findViewById(R.id.textView_sportMatchId);
-        String sportMatchIdString = sportMatchId.getText().toString();
-        Bundle bundle = new Bundle();
-        bundle.putString("sportMatchIdString", sportMatchIdString);
+        TextView sportUserId = recyclerViewMatch
+                .findViewHolderForAdapterPosition(position)
+                .itemView.findViewById(R.id.textView_userId);
+        TextView sportCurrentPlayer = recyclerViewMatch
+                .findViewHolderForAdapterPosition(position)
+                .itemView.findViewById(R.id.textView_currentPlayerOther);
+        TextView sportMaxPlayer = recyclerViewMatch
+                .findViewHolderForAdapterPosition(position)
+                .itemView.findViewById(R.id.textView_maxPlayerOther);
+        TextView sportMatchId = recyclerViewMatch
+                .findViewHolderForAdapterPosition(position)
+                .itemView.findViewById(R.id.textView_sportMatchId);
 
-        mDialogJoinMatch.setArguments(bundle);
-        mDialogJoinMatch.setTargetFragment(MatchRecyclerCardFragment.this, 1);
-        mDialogJoinMatch.show(getFragmentManager(), "DialogJoinMatchFragment");
+        String sportUserIdString = sportUserId.getText().toString();
+        String sportMatchIdString = sportMatchId.getText().toString();
+        Long sportCurrentPlayerLong = Long.valueOf(sportCurrentPlayer.getText().toString());
+        Long sportMaxPlayerLong = Long.valueOf(sportMaxPlayer.getText().toString());
+
+        if (sportUserIdString.equals(userID)) {
+            Toast.makeText(getContext(), "You cannot join your own match!",
+                    Toast.LENGTH_SHORT).show();
+        } else if (sportCurrentPlayerLong.equals(sportMaxPlayerLong)) {
+            Toast.makeText(getContext(), "This match is full!",
+                    Toast.LENGTH_SHORT).show();
+        } else {
+            Bundle bundle = new Bundle();
+            bundle.putString("sportMatchIdString", sportMatchIdString);
+            bundle.putLong("sportCurrentPlayerLong", sportCurrentPlayerLong);
+            bundle.putLong("sportMaxPlayerLong", sportMaxPlayerLong);
+
+            mDialogJoinMatch.setArguments(bundle);
+            mDialogJoinMatch.setTargetFragment(MatchRecyclerCardFragment.this, 1);
+            mDialogJoinMatch.show(getFragmentManager(), "DialogJoinMatchFragment");
+        }
     }
 }

@@ -54,7 +54,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         mFireStore = FirebaseFirestore.getInstance();
 
         DocumentReference mDocumentReference = mFireStore.collection("Users").document(userId);
-        mDocumentReference.addSnapshotListener(getActivity(), new EventListener<DocumentSnapshot>() {
+        mDocumentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot,
                                 @Nullable FirebaseFirestoreException e) {

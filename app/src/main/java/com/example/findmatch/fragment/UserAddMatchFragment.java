@@ -92,8 +92,7 @@ public class UserAddMatchFragment extends Fragment {
         sportItemAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerSportItem = (Spinner) view.findViewById(R.id.spinner_sportItem);
         spinnerSportItem.setAdapter(sportItemAdapter);
-        sportItemRef.get().addOnCompleteListener(
-                new OnCompleteListener<QuerySnapshot>() {
+        sportItemRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
