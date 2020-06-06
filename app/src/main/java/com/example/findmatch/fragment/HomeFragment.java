@@ -58,7 +58,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot,
                                 @Nullable FirebaseFirestoreException e) {
-                usernamePlaceholder.setText(documentSnapshot.getString("user_username"));
+                if (e != null) {
+                    return;
+                }
+
+                if (documentSnapshot != null && documentSnapshot.exists()) {
+                    usernamePlaceholder.setText(documentSnapshot.getString("user_username"));
+                }
             }
         });
 

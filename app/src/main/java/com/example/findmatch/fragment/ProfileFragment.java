@@ -90,12 +90,19 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot,
                                 @Nullable FirebaseFirestoreException e) {
-                textViewUserName.setText(documentSnapshot.getString("user_username"));
-                textViewBio.setText(documentSnapshot.getString("user_bio"));
-                textViewFullName.setText(documentSnapshot.getString("user_full_name"));
-                textViewEmail.setText(documentSnapshot.getString("user_email"));
-                textViewFullAddress.setText(documentSnapshot.getString("user_full_address"));
-                textViewTelpNumber.setText(documentSnapshot.getString("user_telp_number"));
+
+                if (e != null) {
+                    return;
+                }
+
+                if (documentSnapshot != null && documentSnapshot.exists()) {
+                    textViewUserName.setText(documentSnapshot.getString("user_username"));
+                    textViewBio.setText(documentSnapshot.getString("user_bio"));
+                    textViewFullName.setText(documentSnapshot.getString("user_full_name"));
+                    textViewEmail.setText(documentSnapshot.getString("user_email"));
+                    textViewFullAddress.setText(documentSnapshot.getString("user_full_address"));
+                    textViewTelpNumber.setText(documentSnapshot.getString("user_telp_number"));
+                }
             }
         });
 

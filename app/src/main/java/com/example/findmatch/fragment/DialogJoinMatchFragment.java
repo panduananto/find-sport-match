@@ -78,8 +78,7 @@ public class DialogJoinMatchFragment extends DialogFragment {
             }
         });
 
-        textViewAcceptJoin = (TextView) view
-                .findViewById(R.id.textView_buttonAcceptJoin);
+        textViewAcceptJoin = (TextView) view.findViewById(R.id.textView_buttonAcceptJoin);
         textViewAcceptJoin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,8 +91,7 @@ public class DialogJoinMatchFragment extends DialogFragment {
 
     public void userJoinMatch() {
         final DocumentReference matchUserRef = mFireStore.collection("MatchUser").document(sportMatchIdArg);
-        Long totalPlayer = sportCurrentPlayerArg +
-                Integer.valueOf(editTextInputTotalPlayer.getText().toString());
+        Long totalPlayer = sportCurrentPlayerArg + Integer.valueOf(editTextInputTotalPlayer.getText().toString());
 
         if (totalPlayer > sportMaxPlayerArg) {
             Toast.makeText(getContext(),
